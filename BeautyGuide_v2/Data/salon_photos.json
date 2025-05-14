@@ -1,0 +1,12 @@
+﻿[
+  {
+    "Id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+    "Url": "/Data/Images/salon1_photo1.jpg",
+    "SalonId": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d"
+  },
+  {
+    "Id": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
+    "Url": "/Data/Images/salon1_photo2.jpg",
+    "SalonId": "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d"
+  }
+]
