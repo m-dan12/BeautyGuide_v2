@@ -1,3 +1,4 @@
+using System;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
@@ -6,6 +7,7 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using BeautyGuide_v2.ViewModels;
 using BeautyGuide_v2.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BeautyGuide_v2;
 
@@ -18,22 +20,29 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        var serviceProvider = DependencySetup.ConfigureServices();
+        var mainViewModel = serviceProvider.GetService<MainViewModel>();
+        switch (ApplicationLifetime)
         {
-            // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
-            // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
-            DisableAvaloniaDataAnnotationValidation();
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = new MainViewModel()
-            };
-        }
-        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
-        {
-            singleViewPlatform.MainView = new MainView
-            {
-                DataContext = new MainViewModel()
-            };
+            case IClassicDesktopStyleApplicationLifetime desktop:
+                
+                Console.OutputEncoding = System.Text.Encoding.UTF8;
+                DisableAvaloniaDataAnnotationValidation();
+                
+                desktop.MainWindow = new MainWindow
+                {
+                    DataContext = mainViewModel
+                };
+                
+                break;
+            case ISingleViewApplicationLifetime singleViewPlatform:
+                
+                singleViewPlatform.MainView = new MainView
+                {
+                    DataContext = mainViewModel
+                };
+                
+                break;
         }
 
         base.OnFrameworkInitializationCompleted();

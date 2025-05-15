@@ -1,8 +1,8 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:vm="clr-namespace:BeautyGuide_v2.ViewModels"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:BeautyGuide_v2.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="BeautyGuide_v2.Views.CatalogView"
              x:DataType="vm:CatalogViewModel">
@@ -38,13 +38,7 @@
                 <DataTemplate>
                     <StackPanel>
                         <!-- Галерея фотографий -->
-                        <ItemsControl ItemsSource="{Binding Photos}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Image Source="{Binding}" Width="100" Height="100" />
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
+                        <Image Source="{Binding MainPhoto}" Width="100" Height="100" />
 
                         <!-- Наименование и цена -->
                         <TextBlock Text="{Binding Service.Name}" />
@@ -53,7 +47,7 @@
                         <!-- Кнопка мастера -->
                         <Button>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="{Binding Master.Photo}" Width="50" Height="50" />
+                                <Image Source="{Binding MasterPhoto}" Width="50" Height="50" />
                                 <TextBlock Text="{Binding Master.FullName}" />
                             </StackPanel>
                         </Button>

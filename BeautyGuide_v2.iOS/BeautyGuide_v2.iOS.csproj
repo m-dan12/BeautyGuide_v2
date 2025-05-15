@@ -7,7 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Avalonia" />
         <PackageReference Include="Avalonia.iOS"/>
+        <PackageReference Include="Avalonia.Svg" />
     </ItemGroup>
 
     <ItemGroup>

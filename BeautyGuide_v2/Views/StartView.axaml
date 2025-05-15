@@ -1,0 +1,62 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:BeautyGuide_v2.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="BeautyGuide_v2.Views.StartView"
+             x:DataType="vm:StartViewModel">
+    <UserControl.Styles>
+        <Style Selector="Border.Main">
+            <Style Selector="^>Border">
+                <Setter Property="Background">
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                        <GradientStop Offset="0" Color="#40000000"/>
+                        <GradientStop Offset="1" Color="#C0000000"/>
+                    </LinearGradientBrush>
+                </Setter>
+            </Style>
+            <Setter Property="Background">
+                <ImageBrush Source="/Assets/start-page-background.png" Stretch="UniformToFill"/>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
+    <Border Classes="Main"><Border>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="50" MaxWidth="1150" Spacing="35">
+            <TextBlock HorizontalAlignment="Left" FontSize="48" FontWeight="Bold" MaxWidth="600" TextWrapping="Wrap" Text="Найдите лучшие салоны красоты и мастеров Самары рядом с вами – запишитесь онлайн!"/>
+            <TextBlock HorizontalAlignment="Left" FontSize="20" MaxWidth="600" TextWrapping="Wrap" >Удобный поиск по услугам, рейтингам и отзывам позволит выбрать лучший вариант, а онлайн-запись сэкономит ваше время. Выбирайте качество и комфорт – бронируйте стрижки, маникюр, записывайтесь на услуги косметологов в пару кликов!</TextBlock>
+            <Button Background="#EAC7CC" Padding="60 0" Height="50" CornerRadius="25" VerticalContentAlignment="Center">
+                <TextBlock Text="Приступить к поиску" FontWeight="Bold" FontSize="16"/>
+            </Button>
+            <WrapPanel Orientation="Horizontal">
+                <StackPanel Spacing="20" Margin="10">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <Svg Width="20" Path="/Assets/check-circle.svg"/>
+                        <TextBlock Text="Удобный поиск салонов" FontWeight="Bold" FontSize="16"/>
+                    </StackPanel>
+                    <TextBlock Width="350" TextWrapping="Wrap">
+                        На сайте собраны лучшие салоны красоты Самары — вы можете фильтровать их по услугам (маникюр, макияж, стрижки и т.д.), рейтингу, ценам и расстоянию от вашего местоположения. Удобная карта и понятная система поиска помогут за несколько минут найти идеальный вариант без лишних звонков и поездок.
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Spacing="20" Margin="10">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <Svg Width="20" Path="/Assets/check-circle.svg"/>
+                        <TextBlock Text="Только проверенные отзывы" FontWeight="Bold" FontSize="16"/>
+                    </StackPanel>
+                    <TextBlock Width="350" TextWrapping="Wrap">
+                        Мы собираем отзывы от реальных клиентов, чтобы вы могли получить честную информацию о качестве услуг. Каждый отзыв проходит модерацию, а система рейтингов позволяет быстро понять, насколько популярен и надежен выбранный салон. Это помогает избежать разочарований и найти действительно профессиональных мастеров.
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Spacing="20" Margin="10">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <Svg Width="20" Path="/Assets/check-circle.svg"/>
+                        <TextBlock Text="Красивый и интуитивный интерфейс" FontWeight="Bold" FontSize="16"/>
+                    </StackPanel>
+                    <TextBlock Width="350" TextWrapping="Wrap">
+                        Сайт создан так, чтобы пользоваться им было приятно: нежный дизайн, простая навигация, адаптация под мобильные устройства. Всё продумано для вашего удобства — вы легко сможете выбрать салон, ознакомиться с отзывами и даже сразу записаться на услугу онлайн.
+                    </TextBlock>
+                </StackPanel>
+            </WrapPanel>
+        </StackPanel>
+    </Border></Border>
+</UserControl>

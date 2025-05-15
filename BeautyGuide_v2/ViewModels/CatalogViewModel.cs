@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
 using Avalonia.Media.Imaging;
@@ -13,6 +14,7 @@ namespace BeautyGuide_v2.ViewModels;
 public class CatalogViewModel : ViewModelBase
 {
     private readonly IDataService _dataService;
+    private readonly IImageLoaderService _imageLoaderService;
 
     private ObservableCollection<ServiceCard> _allServices;
     private ObservableCollection<ServiceCard> _filteredServices;
@@ -23,7 +25,7 @@ public class CatalogViewModel : ViewModelBase
     private string _sortBy;
     private bool _isDataLoaded; // Флаг для отслеживания загрузки данных
 
-    public CatalogViewModel(IDataService dataService)
+    public CatalogViewModel(IDataService dataService, IImageLoaderService imageLoaderService)
     {
         _dataService = dataService;
         _allServices = new ObservableCollection<ServiceCard>();
@@ -32,10 +34,7 @@ public class CatalogViewModel : ViewModelBase
         _isDataLoaded = false;
 
         // Реактивное обновление при изменении фильтров
-        this.WhenAnyValue(
-                x => x.SelectedCategory,
-                x => x.MinPrice,
-                x => x.MaxPrice)
+        this.WhenAnyValue(x => x.SelectedCategory, x => x.MinPrice, x => x.MaxPrice)
             .Throttle(TimeSpan.FromMilliseconds(300))
             .Where(_ => _isDataLoaded) // Выполнять только после загрузки данных
             .Subscribe(_ => ApplyFilters());
@@ -98,19 +97,20 @@ public class CatalogViewModel : ViewModelBase
                 services.Select(s => new ServiceCard
                 {
                     Service = s,
-                    Photos = servicePhotos.Where(p => p.ServiceId == s.Id).Select(p => new Bitmap(p.Url)).ToList(),
+                    Photos = servicePhotos.Where(p => p.ServiceId == s.Id).Select(p => p.Url).ToList(),
                     Master = masters.FirstOrDefault(m => m.Id == s.MasterId),
-                    Salon = salons.FirstOrDefault(sal => sal.Id == s.SalonId)
+                    Salon = salons.FirstOrDefault(sal => sal.Id == s.SalonId),
+                    MainPhoto = _imageLoaderService.LoadImage(servicePhotos.FirstOrDefault(p => p.ServiceId == s.Id)?.Url),
+                    MasterPhoto = _imageLoaderService.LoadImage(masters.FirstOrDefault(m => m.Id == s.MasterId)?.Photo)
                 })
             );
 
             Services = new ObservableCollection<ServiceCard>(_allServices);
             Categories = categories;
-            _isDataLoaded = true; // Данные загружены, можно применять фильтры и сортировку
+            _isDataLoaded = true;
         }
         catch (Exception ex)
         {
-            // Обработка ошибок загрузки данных
             Console.WriteLine($"Ошибка загрузки данных: {ex.Message}");
         }
     }

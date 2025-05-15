@@ -18,7 +18,9 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Avalonia" />
         <PackageReference Include="Avalonia.Android"/>
+        <PackageReference Include="Avalonia.Svg" />
         <PackageReference Include="Xamarin.AndroidX.Core.SplashScreen"/>
     </ItemGroup>
 

@@ -10,6 +10,7 @@
         <AvaloniaResource Include="Assets\**"/>
     </ItemGroup>
     <ItemGroup>
+        <AvaloniaResource Include="Data\Images\*.jpg" />
         <None Update="Data\Images\*.jpg">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
@@ -19,12 +20,11 @@
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>
-    <ItemGroup>
-        <AvaloniaResource Include="Data\Images\*.jpg" />
-    </ItemGroup>
+    
 
     <ItemGroup>
         <PackageReference Include="Avalonia"/>
+        <PackageReference Include="Avalonia.Svg" />
         <PackageReference Include="Avalonia.Themes.Fluent"/>
         <PackageReference Include="Avalonia.Fonts.Inter"/>
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
@@ -33,7 +33,13 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
         <PackageReference Include="ReactiveUI" />
         <PackageReference Include="ReactiveUI.Fody" />
+    </ItemGroup>
+    
+
+    <ItemGroup>
+      <Folder Include="Controls\" />
     </ItemGroup>
 </Project>
