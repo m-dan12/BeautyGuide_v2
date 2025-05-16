@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using Avalonia.Threading;
 using BeautyGuide_v2.Interfaces;
 using BeautyGuide_v2.ViewModels;
@@ -7,19 +9,36 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace BeautyGuide_v2.Services;
 
-public sealed class NavigationService(IServiceProvider serviceProvider) : INavigationService
+public class NavigationService() : INavigationService
 {
-    private readonly IServiceProvider _serviceProvider = serviceProvider;
-
+    private MainViewModel? _mainViewModel;
+    private readonly Stack<ViewModelBase> _navigationStack = new Stack<ViewModelBase>();
     public event Action<ViewModelBase> ViewModelChanged;
-
-    public void NavigateTo<TViewModel>() where TViewModel : ViewModelBase
+    public void SetMainViewModel(MainViewModel mainViewModel)
     {
-        Console.WriteLine($"NavigateTo<{typeof(TViewModel).Name}> вызван в потоке {Thread.CurrentThread.ManagedThreadId} (IsThreadPoolThread: {Thread.CurrentThread.IsThreadPoolThread})");
-        var viewModel = _serviceProvider.GetService<TViewModel>();
-        if (viewModel != null)
-        {
-            ViewModelChanged?.Invoke(viewModel);
-        }
+        _mainViewModel = mainViewModel;
+    }
+
+    public async Task NavigateTo<TViewModel>(object parameter = null) where TViewModel : ViewModelBase
+    {
+        var viewModel = ServiceProvider.Services.GetService<TViewModel>();
+        
+        if (_mainViewModel == null)
+            throw new InvalidOperationException("MainViewModel not set");
+        
+        if (viewModel is IInitializableViewModel initializable)
+            await initializable.LoadAsync(parameter?.ToString());
+        
+        _navigationStack.Push(_mainViewModel.CurrentViewModel);
+        _mainViewModel.CurrentViewModel = viewModel;
+        ViewModelChanged?.Invoke(viewModel);
+    }
+    public void GoBack()
+    {
+        if (_navigationStack.Count <= 0) return;
+        
+        var previousViewModel = _navigationStack.Pop();
+        _mainViewModel.CurrentViewModel = previousViewModel;
+        ViewModelChanged?.Invoke(previousViewModel);
     }
 }

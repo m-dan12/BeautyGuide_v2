@@ -7,9 +7,17 @@ using BeautyGuide_v2.ViewModels;
 
 namespace BeautyGuide_v2;
 
-public static class DependencySetup
+public static class ServiceProvider
 {
-    public static IServiceProvider ConfigureServices()
+    private static IServiceProvider? _serviceProvider;
+
+    public static IServiceProvider Services
+    {
+        get => _serviceProvider ?? throw new InvalidOperationException("ServiceProvider not initialized");
+        private set => _serviceProvider = value;
+    }
+
+    public static void Initialize()
     {
         var services = new ServiceCollection();
 
@@ -22,8 +30,9 @@ public static class DependencySetup
         RegisterViewModels(services, Assembly.GetExecutingAssembly());
 
         // Построение провайдера сервисов
-        return services.BuildServiceProvider();
+        Services = services.BuildServiceProvider();
     }
+    
     private static void RegisterViewModels(IServiceCollection sc, Assembly asm)
     {
         foreach (var t in asm.GetTypes())

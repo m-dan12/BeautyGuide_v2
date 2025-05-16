@@ -13,29 +13,23 @@ namespace BeautyGuide_v2.ViewModels;
 public partial class MainViewModel : ViewModelBase
 {
     private readonly INavigationService _navigationService;
-    [Reactive] public ViewModelBase? CurrentViewModel { get; set; }
+    [Reactive] public ViewModelBase CurrentViewModel { get; set; }
 
-    #region Команды
+    #region Navigation
 
-    public ReactiveCommand<Unit, Unit> ToStart           { get; }
-    public ReactiveCommand<Unit, Unit> ToSalons          { get; }
-    public ReactiveCommand<Unit, Unit> ToTop             { get; }
-    public ReactiveCommand<Unit, Unit> ToAboutUs         { get; }
-    public ReactiveCommand<Unit, Unit> ToRecommendations { get; }
-    public ReactiveCommand<Unit, Unit> ToContacts        { get; }
+    public void ToStart()           => _navigationService.NavigateTo<StartViewModel>();
+    public void ToCatalog()         => _navigationService.NavigateTo<CatalogViewModel>();
+    public void ToTop()             => _navigationService.NavigateTo<TopViewModel>();
+    public void ToAboutUs()         => _navigationService.NavigateTo<AboutUsViewModel>();
+    public void ToGuide()           => _navigationService.NavigateTo<GuideViewModel>();
+    public void ToContacts()        => _navigationService.NavigateTo<ContactsViewModel>();
 
     #endregion
 
-    public MainViewModel(INavigationService navigationService)
+    public MainViewModel(INavigationService navigationService, StartViewModel startViewModel)
     {
         _navigationService = navigationService;
-        _navigationService.ViewModelChanged += viewModel => CurrentViewModel = viewModel;
-        ToStart           = ReactiveCommand.Create(_navigationService.NavigateTo<StartViewModel>);
-        ToSalons          = ReactiveCommand.Create(_navigationService.NavigateTo<CatalogViewModel>);
-        ToTop             = ReactiveCommand.Create(_navigationService.NavigateTo<TopViewModel>);
-        ToAboutUs         = ReactiveCommand.Create(_navigationService.NavigateTo<AboutUsViewModel>);
-        ToRecommendations = ReactiveCommand.Create(_navigationService.NavigateTo<GuideViewModel>);
-        
-        _navigationService.NavigateTo<StartViewModel>();
+        CurrentViewModel = startViewModel;
+        (navigationService as NavigationService).SetMainViewModel(this);
     }
 }

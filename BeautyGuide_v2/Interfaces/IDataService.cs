@@ -13,4 +13,7 @@ public interface IDataService
     Task<List<SalonPhoto>> GetSalonPhotosAsync();
     Task<List<ServicePhoto>> GetServicePhotosAsync();
     Task<List<Appointment>> GetAppointmentsAsync();
+    Task<Master> GetMasterByIdAsync(string id);              // Мастер по ID
+    Task<Salon> GetSalonByIdAsync(string id);                // Салон по ID
+    Task<List<Service>> GetServicesByMasterIdAsync(string masterId); // Услуги мастера
 }

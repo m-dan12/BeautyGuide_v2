@@ -1,10 +1,11 @@
 using System;
+using System.Threading.Tasks;
 using BeautyGuide_v2.ViewModels;
 
 namespace BeautyGuide_v2.Interfaces;
 
 public interface INavigationService
 {
-    void NavigateTo<TViewModel>() where TViewModel : ViewModelBase;
-    event Action<ViewModelBase> ViewModelChanged;
+    Task NavigateTo<TViewModel>(object parameter = null) where TViewModel : ViewModelBase;
+    void GoBack();
 }

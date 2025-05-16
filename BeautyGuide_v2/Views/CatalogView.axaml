@@ -3,63 +3,99 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:BeautyGuide_v2.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450" Background="White"
              x:Class="BeautyGuide_v2.Views.CatalogView"
              x:DataType="vm:CatalogViewModel">
-    <StackPanel>
-        <!-- Фильтр по категориям -->
-        <TreeView DockPanel.Dock="Left" Foreground="Black" Width="350"
-                  ItemsSource="{Binding Categories}"
-                  SelectedItem="{Binding SelectedCategory}">
-            <TreeView.ItemTemplate>
-                <TreeDataTemplate ItemsSource="{Binding SubCategories}">
-                    <TextBlock Text="{Binding Name}"/>
-                </TreeDataTemplate>
-            </TreeView.ItemTemplate>
-        </TreeView>
-        
-
-        <!-- Фильтр по цене -->
-        <TextBox Text="{Binding MinPrice}" Watermark="Мин. цена" />
-        <TextBox Text="{Binding MaxPrice}" Watermark="Макс. цена" />
-
-        <!-- Сортировка -->
-        <ComboBox SelectedItem="{Binding SortBy}">
-            <ComboBoxItem>Популярность</ComboBoxItem>
-            <ComboBoxItem>Новые</ComboBoxItem>
-            <ComboBoxItem>Дешевле</ComboBoxItem>
-            <ComboBoxItem>Дороже</ComboBoxItem>
-            <ComboBoxItem>С высоким рейтингом</ComboBoxItem>
-        </ComboBox>
-
-        <!-- Список карточек -->
-        <ItemsControl ItemsSource="{Binding Services}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <!-- Галерея фотографий -->
-                        <Image Source="{Binding MainPhoto}" Width="100" Height="100" />
-
-                        <!-- Наименование и цена -->
-                        <TextBlock Text="{Binding Service.Name}" />
-                        <TextBlock Text="{Binding Service.Price, StringFormat='{}{0} руб.'}" />
-
-                        <!-- Кнопка мастера -->
-                        <Button>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Source="{Binding MasterPhoto}" Width="50" Height="50" />
-                                <TextBlock Text="{Binding Master.FullName}" />
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style Selector="ContentPresenter">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+    </UserControl.Styles>
+    <DockPanel Margin="50 25">
+        <StackPanel Spacing="15" DockPanel.Dock="Top" HorizontalAlignment="Right" Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Watermark="Поиск"
+                         MinWidth="200"
+                         Height="24" CornerRadius="2 0 0 2" Background="#F8F8F8" BorderBrush="#DDDDDD" BorderThickness="1 1 0.5 1"/>
+                <Button VerticalAlignment="Stretch" MinWidth="24" CornerRadius="0 2 2 0" Background="#F8F8F8" BorderBrush="#DDDDDD" BorderThickness="0.5 1 1 1">
+                    <Svg Width="12" Path="/Assets/magnifying-glass.svg"/>
+                </Button>
+            </StackPanel>
+            <ComboBox SelectedItem="{Binding SortBy}" MinWidth="200" Background="#F8F8F8" BorderBrush="#DDDDDD" CornerRadius="2" BorderThickness="1 " Foreground="Black">
+                <ComboBoxItem>Популярность</ComboBoxItem>
+                <ComboBoxItem>Новые</ComboBoxItem>
+                <ComboBoxItem>Дешевле</ComboBoxItem>
+                <ComboBoxItem>Дороже</ComboBoxItem>
+                <ComboBoxItem>С высоким рейтингом</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel>
+            <!-- Фильтр по категориям -->
+            <ToggleButton Content="Все"/>
+            <TreeView DockPanel.Dock="Left" Width="250"
+                      ItemsSource="{Binding Categories}"
+                      SelectedItem="{Binding SelectedCategory}">
+                <TreeView.ItemTemplate>
+                    <TreeDataTemplate ItemsSource="{Binding SubCategories}">
+                        <TextBlock Text="{Binding Name}"/>
+                    </TreeDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+            <Grid ColumnDefinitions="* *">
+                <TextBox Text="{Binding MinPrice}" Watermark="Мин. цена" Margin="0 0 5 0"/>
+                <TextBox Grid.Column="1" Text="{Binding MaxPrice}" Watermark="Макс. цена" Margin="5 0 0 0"/>
+            </Grid>
+        </StackPanel>
+        <StackPanel>
+            <!-- Список карточек -->
+            <ItemsControl ItemsSource="{Binding Services}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Margin="10"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="300" Height="510" Margin="10">
+                            <StackPanel Spacing="10">
+                                <Image Source="{Binding MainPhoto}" Width="300" Height="300" />
+                                <!-- Название услуги и цена -->
+                                <Grid ColumnDefinitions="* auto">
+                                    <TextBlock Text="{Binding Service.Name}" FontSize="16"/>
+                                    <TextBlock Text="{Binding Service.Price, StringFormat='{}{0} ₽'}"
+                                               Grid.Column="1" Margin="20 0 0 0" FontSize="20" FontWeight="Bold"/>
+                                </Grid>
+                                <!-- Кнопка мастера -->
+                                <Button Padding="0"
+                                        Command="{Binding GoToMaster}">
+                                    <Grid ColumnDefinitions="auto *">
+                                        <Image Source="{Binding MasterPhoto}" Stretch="UniformToFill" Width="60" Height="60" Margin="0 0 10 0"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Master.FullName}" FontSize="16" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Button>
+                                
+                                <!-- Кнопка "Записаться" -->
+                                <Button Height="40" Background="Black" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                                    <TextBlock Text="Записаться" Foreground="White" FontSize="16" FontWeight="Bold"/>
+                                </Button>
+    
+                                <!-- Кнопка салона -->
+                                <Button Padding="0"
+                                        Command="{Binding GoToSalon}">
+                                    <Grid ColumnDefinitions="auto *">
+                                        <Svg Width="18" Path="/Assets/geolocation.svg" Margin="5"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding Salon.Name}" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Button>
                             </StackPanel>
-                        </Button>
-
-                        <!-- Кнопка салона -->
-                        <Button Content="{Binding Salon.Name}" />
-
-                        <!-- Кнопка "Записаться" -->
-                        <Button Content="Записаться" />
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </StackPanel>
+                        </Border>
+                        
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </DockPanel>
 </UserControl>

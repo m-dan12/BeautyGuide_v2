@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using BeautyGuide_v2.Interfaces;
@@ -10,20 +11,54 @@ namespace BeautyGuide_v2.Services;
 
 public class JsonDataService : IDataService
 {
-    private readonly string _dataPath;
+    private readonly string _dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
 
-    public JsonDataService()
+    public async Task<Master> GetMasterByIdAsync(string id)
     {
-        _dataPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+        var masters = await LoadMastersAsync();
+        return masters.FirstOrDefault(m => m.Id == id);
     }
-
+    
+    public async Task<Salon> GetSalonByIdAsync(string id)
+    {
+        var salons = await LoadSalonsAsync();
+        return salons.FirstOrDefault(s => s.Id == id);
+    }
+    
+    public async Task<List<Service>> GetServicesByMasterIdAsync(string masterId)
+    {
+        var services = await LoadServicesAsync();
+        return services.Where(s => s.MasterId == masterId).ToList();
+    }
+    
+    private async Task<List<Master>> LoadMastersAsync()
+    {
+        var filePath = Path.Combine(_dataPath, "masters.json");
+        var json = await File.ReadAllTextAsync(filePath);
+        return JsonSerializer.Deserialize<List<Master>>(json);
+    }
+    
+    private async Task<List<Salon>> LoadSalonsAsync()
+    {
+        var filePath = Path.Combine(_dataPath, "salons.json");
+        var json = await File.ReadAllTextAsync(filePath);
+        return JsonSerializer.Deserialize<List<Salon>>(json);
+    }
+    
+    private async Task<List<Service>> LoadServicesAsync()
+    {
+        var filePath = Path.Combine(_dataPath, "services.json");
+        var json = await File.ReadAllTextAsync(filePath);
+        return JsonSerializer.Deserialize<List<Service>>(json);
+    }
+    
     public async Task<List<Category>> GetCategoriesAsync()
     {
         var filePath = Path.Combine(_dataPath, "categories.json");
         var json = await File.ReadAllTextAsync(filePath);
         return JsonSerializer.Deserialize<List<Category>>(json);
     }
-
+    
     public async Task<List<Master>> GetMastersAsync()
     {
         var filePath = Path.Combine(_dataPath, "masters.json");

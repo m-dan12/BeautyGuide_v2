@@ -16,35 +16,28 @@ public partial class App : Application
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+        ServiceProvider.Initialize();
     }
 
     public override void OnFrameworkInitializationCompleted()
     {
-        var serviceProvider = DependencySetup.ConfigureServices();
-        var mainViewModel = serviceProvider.GetService<MainViewModel>();
         switch (ApplicationLifetime)
         {
             case IClassicDesktopStyleApplicationLifetime desktop:
-                
-                Console.OutputEncoding = System.Text.Encoding.UTF8;
+                Console.OutputEncoding = System.Text.Encoding.UTF8; // Чтобы в консольки русский выводился
                 DisableAvaloniaDataAnnotationValidation();
-                
                 desktop.MainWindow = new MainWindow
                 {
-                    DataContext = mainViewModel
+                    DataContext = ServiceProvider.Services.GetService<MainViewModel>()
                 };
-                
                 break;
             case ISingleViewApplicationLifetime singleViewPlatform:
-                
                 singleViewPlatform.MainView = new MainView
                 {
-                    DataContext = mainViewModel
+                    DataContext = ServiceProvider.Services.GetService<MainViewModel>()
                 };
-                
                 break;
         }
-
         base.OnFrameworkInitializationCompleted();
     }
 

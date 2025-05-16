@@ -16,13 +16,13 @@
                                 HorizontalAlignment="Right"
                                 Spacing="20">
                         <Button Content="Каталог"
-                                Command="{Binding ToSalons}"/>
+                                Command="{Binding ToCatalog}"/>
                         <Button Content="Выбор клиентов"
                                 Command="{Binding ToTop}"/>
                         <Button Content="О нас"
                                 Command="{Binding ToAboutUs}"/>
                         <Button Content="Советы"
-                                Command="{Binding ToRecommendations}"/>
+                                Command="{Binding ToGuide}"/>
                         <Button Content="Контакты"
                                 Command="{Binding ToContacts}"/>
                         <Button Content="+7 (111) 111-11-11"/>

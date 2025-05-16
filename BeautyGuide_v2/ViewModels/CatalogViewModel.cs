@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Threading.Tasks;
 using Avalonia.Media.Imaging;
 using ReactiveUI;
 using BeautyGuide_v2.Interfaces;
@@ -11,10 +12,11 @@ using BeautyGuide_v2.Models;
 
 namespace BeautyGuide_v2.ViewModels;
 
-public class CatalogViewModel : ViewModelBase
+public class CatalogViewModel : ViewModelBase, IInitializableViewModel
 {
     private readonly IDataService _dataService;
     private readonly IImageLoaderService _imageLoaderService;
+    private readonly INavigationService _navigationService;
 
     private ObservableCollection<ServiceCard> _allServices;
     private ObservableCollection<ServiceCard> _filteredServices;
@@ -24,13 +26,16 @@ public class CatalogViewModel : ViewModelBase
     private decimal _maxPrice;
     private string _sortBy;
     private bool _isDataLoaded; // Флаг для отслеживания загрузки данных
+    
 
-    public CatalogViewModel(IDataService dataService, IImageLoaderService imageLoaderService)
+    public CatalogViewModel(IDataService dataService, IImageLoaderService imageLoaderService, INavigationService тavigationService)
     {
-        _dataService = dataService;
-        _allServices = new ObservableCollection<ServiceCard>();
-        _filteredServices = new ObservableCollection<ServiceCard>();
-        _categories = new List<Category>();
+        _dataService = dataService ?? throw new ArgumentNullException(nameof(dataService));
+        _imageLoaderService = imageLoaderService ?? throw new ArgumentNullException(nameof(imageLoaderService));
+        _navigationService = тavigationService ?? throw new ArgumentNullException(nameof(imageLoaderService));
+        _allServices = [];
+        _filteredServices = [];
+        _categories = [];
         _isDataLoaded = false;
 
         // Реактивное обновление при изменении фильтров
@@ -42,9 +47,6 @@ public class CatalogViewModel : ViewModelBase
         this.WhenAnyValue(x => x.SortBy)
             .Where(_ => _isDataLoaded) // Выполнять только после загрузки данных
             .Subscribe(_ => ApplySorting());
-
-        // Загрузка данных
-        LoadDataAsync();
     }
 
     public ObservableCollection<ServiceCard> Services
@@ -83,7 +85,7 @@ public class CatalogViewModel : ViewModelBase
         set => this.RaiseAndSetIfChanged(ref _sortBy, value);
     }
 
-    private async void LoadDataAsync()
+    public async Task LoadAsync(string parameter)
     {
         try
         {
@@ -94,16 +96,17 @@ public class CatalogViewModel : ViewModelBase
             var categories = await _dataService.GetCategoriesAsync();
 
             _allServices = new ObservableCollection<ServiceCard>(
-                services.Select(s => new ServiceCard
+                services.Select(s =>
                 {
-                    Service = s,
-                    Photos = servicePhotos.Where(p => p.ServiceId == s.Id).Select(p => p.Url).ToList(),
-                    Master = masters.FirstOrDefault(m => m.Id == s.MasterId),
-                    Salon = salons.FirstOrDefault(sal => sal.Id == s.SalonId),
-                    MainPhoto = _imageLoaderService.LoadImage(servicePhotos.FirstOrDefault(p => p.ServiceId == s.Id)?.Url),
-                    MasterPhoto = _imageLoaderService.LoadImage(masters.FirstOrDefault(m => m.Id == s.MasterId)?.Photo)
-                })
-            );
+                    var master = masters.FirstOrDefault(m => m.Id == s.MasterId);
+                    var salon = salons.FirstOrDefault(sal => sal.Id == s.SalonId);
+                    var photoUrl = servicePhotos.FirstOrDefault(p => p.ServiceId == s.Id)?.Url;
+                    return new ServiceCard(s, servicePhotos.Where(p => p.ServiceId == s.Id).Select(p => p.Url).ToList(), master, salon, _navigationService)
+                    {
+                        MainPhoto = _imageLoaderService.LoadImage(photoUrl),
+                        MasterPhoto = master != null ? _imageLoaderService.LoadImage(master.Photo) : null
+                    };
+                }));
 
             Services = new ObservableCollection<ServiceCard>(_allServices);
             Categories = categories;

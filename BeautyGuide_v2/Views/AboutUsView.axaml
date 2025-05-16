@@ -6,5 +6,24 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="BeautyGuide_v2.Views.AboutUsView"
              x:DataType="vm:AboutUsViewModel">
-    Welcome to Avalonia!
+    <Border>
+        <Border.Background>
+            <ImageBrush Source="/Assets/start-page-background.png" Stretch="UniformToFill"/>
+        </Border.Background>
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center" Background="white" Padding="50">
+            <StackPanel Spacing="20">
+                <TextBlock Text="О нас" Foreground="Black" FontSize="48" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <Rectangle Height="2" Width="100" Fill="DarkGray"/>
+                <TextBlock Text="Мы собрали лучших мастеров красоты в одном месте!" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <TextBlock MaxWidth="450" Foreground="Black" TextWrapping="Wrap">Выбирайте проверенных специалистов по парикмахерскому искусству, ногтевому сервису, косметологии и другим направлениям — с реальными отзывами, рейтингами и примерами работ. Наш сервис помогает быстро найти идеального мастера рядом с вами и записаться онлайн в пару кликов. Доверьте свою красоту профессионалам!"</TextBlock>
+                <TextBlock Text="Почему мы?" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Center"/> 
+                <TextBlock MaxWidth="450" Foreground="Black" TextWrapping="Wrap">
+                    ✔ Только квалифицированные мастера с подтверждённым опытом<LineBreak/>
+                    ✔ Удобный поиск по услугам, рейтингу и отзывам<LineBreak/>
+                    ✔ Примеры работ и честные оценки клиентов
+                </TextBlock>
+                <TextBlock Text="Ваша красота — наш главный критерий! 💖" Foreground="Black" FontStyle="Italic"/> 
+            </StackPanel>
+        </Border>
+    </Border>
 </UserControl>

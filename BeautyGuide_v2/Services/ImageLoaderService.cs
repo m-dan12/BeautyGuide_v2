@@ -27,7 +27,7 @@ public class ImageLoaderService : IImageLoaderService
             }
 
             // Загрузка как встроенного ресурса
-            string resourceUri = $"avares://{_assemblyName}/{imagePath}";
+            var resourceUri = $"avares://{_assemblyName}/{imagePath}";
             Console.WriteLine($"Загружаю изображение как ресурс: {resourceUri}");
             return new Bitmap(resourceUri);
         }
