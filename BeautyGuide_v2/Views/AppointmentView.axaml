@@ -1,0 +1,65 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:BeautyGuide_v2.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="670"
+             x:Class="BeautyGuide_v2.Views.AppointmentView"
+             x:DataType="vm:AppointmentViewModel">
+    <UserControl.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <Style Selector="ContentPresenter">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+    </UserControl.Styles>
+    <Border Background="#A0000000">
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" MaxWidth="560" Padding="30">
+            <ScrollViewer>
+                <StackPanel Margin="20" Spacing="20">
+                    <Grid ColumnDefinitions="* auto">
+                        <TextBlock Text="Ваш заказ:" FontWeight="Bold" FontSize="20" VerticalAlignment="Center"/>
+                        <Button Grid.Column="1" Padding="0" CornerRadius="0" BorderThickness="0"
+                                Command="{Binding CloseCommand}">
+                            <Svg Path="/Assets/x.svg" Width="24"/>
+                        </Button>
+                    </Grid>
+                    <Border Background="Gray" HorizontalAlignment="Stretch" Height="1"/>
+                    <Grid ColumnDefinitions="auto * auto">
+                        <Image Width="75" Height="75" Source="{Binding ServicePhoto}"/>
+                        <StackPanel Spacing="5" Margin="10 0" Grid.Column="1">
+                            <TextBlock Text="{Binding ServiceName}" FontSize="16" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding MasterName, StringFormat='Мастер: {0}'}" FontSize="12" Foreground="DarkGray"/>
+                            <TextBlock Text="{Binding SalonName, StringFormat='Салон: {0}'}" FontSize="12" Foreground="DarkGray"/>
+                        </StackPanel>
+                        <TextBlock Grid.Column="2" Text="{Binding ServicePrice, StringFormat='{}{0} ₽'}" />
+                    </Grid>
+                    <Border Background="Gray" HorizontalAlignment="Stretch" Height="1"/>
+                    <StackPanel Spacing="5">
+                        <TextBlock Text="Дата"/>
+                        <DatePicker SelectedDate="{Binding SelectedDate}"/>
+                    </StackPanel>
+                    <StackPanel Spacing="5">
+                        <TextBlock Text="Время"/>
+                        <ComboBox ItemsSource="{Binding AvailableTimes}" SelectedItem="{Binding SelectedTime}" Height="40"/>
+                    </StackPanel>
+                    <StackPanel Spacing="5">
+                        <TextBlock Text="Как вас зовут?"/>
+                        <TextBox Text="{Binding FullName}" VerticalContentAlignment="Center" Watermark="Введите ФИО" Height="40"
+                                 BorderBrush="{Binding FullName, Converter={StaticResource EmptyToRedBrushConverter}}"/>
+                    </StackPanel>
+                    <StackPanel Spacing="5">
+                        <TextBlock Text="Номер телефона"/>
+                        <TextBox Text="{Binding PhoneNumber}" VerticalContentAlignment="Center" Watermark="Введите номер телефона" Height="40"
+                                 BorderBrush="{Binding PhoneNumber, Converter={StaticResource EmptyToRedBrushConverter}}"/>
+                    </StackPanel>
+                    <Button Background="Black" Height="50" CornerRadius="0" HorizontalAlignment="Stretch" BorderThickness="0"
+                            Command="{Binding Submit}">
+                        <TextBlock Text="Записаться" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+                    </Button>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Border>
+</UserControl>

@@ -10,6 +10,7 @@
         <PackageReference Include="Avalonia" />
         <PackageReference Include="Avalonia.Browser"/>
         <PackageReference Include="Avalonia.Svg" />
+        <PackageReference Include="ReactiveUI.Validation" />
     </ItemGroup>
 
     <ItemGroup>

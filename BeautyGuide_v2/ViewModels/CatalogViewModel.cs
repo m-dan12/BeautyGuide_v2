@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using Avalonia.Media.Imaging;
 using ReactiveUI;
 using BeautyGuide_v2.Interfaces;
 using BeautyGuide_v2.Models;

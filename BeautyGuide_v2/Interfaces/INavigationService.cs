@@ -8,4 +8,7 @@ public interface INavigationService
 {
     Task NavigateTo<TViewModel>(object parameter = null) where TViewModel : ViewModelBase;
     void GoBack();
+    Task ShowPopup<TViewModel>(object parameter = null) where TViewModel : ViewModelBase;
+    void ClosePopup();
+    
 }

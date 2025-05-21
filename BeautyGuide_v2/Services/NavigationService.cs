@@ -41,4 +41,25 @@ public class NavigationService() : INavigationService
         _mainViewModel.CurrentViewModel = previousViewModel;
         ViewModelChanged?.Invoke(previousViewModel);
     }
+    
+    public async Task ShowPopup<TViewModel>(object parameter = null) where TViewModel : ViewModelBase
+    {
+        var viewModel = ServiceProvider.Services.GetService<TViewModel>();
+        if (viewModel == null)
+        {
+            throw new InvalidOperationException($"Не удалось создать Popup ViewModel типа {typeof(TViewModel).Name}.");
+        }
+
+        if (viewModel is IInitializableViewModel initializable)
+        {
+            await initializable.LoadAsync(parameter?.ToString());
+        }
+
+        _mainViewModel.PopupViewModel = viewModel; // Устанавливаем PopupViewModel
+    }
+
+    public void ClosePopup()
+    {
+        _mainViewModel.PopupViewModel = null; // Сбрасываем PopupViewModel
+    }
 }

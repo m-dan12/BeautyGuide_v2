@@ -14,6 +14,7 @@ public partial class MainViewModel : ViewModelBase
 {
     private readonly INavigationService _navigationService;
     [Reactive] public ViewModelBase CurrentViewModel { get; set; }
+    [Reactive] public ViewModelBase? PopupViewModel { get; set; }
 
     #region Navigation
 
@@ -25,6 +26,11 @@ public partial class MainViewModel : ViewModelBase
     public void ToContacts()        => _navigationService.NavigateTo<ContactsViewModel>();
 
     #endregion
+    
+    #region Popup
+    public void CloseCommand() => _navigationService.ClosePopup();
+    #endregion
+    
 
     public MainViewModel(INavigationService navigationService, StartViewModel startViewModel)
     {

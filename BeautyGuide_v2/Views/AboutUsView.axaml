@@ -6,10 +6,14 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="BeautyGuide_v2.Views.AboutUsView"
              x:DataType="vm:AboutUsViewModel">
-    <Border>
-        <Border.Background>
-            <ImageBrush Source="/Assets/start-page-background.png" Stretch="UniformToFill"/>
-        </Border.Background>
+    <UserControl.Styles>
+        <Style Selector="Border.Photo">
+            <Setter Property="Background">
+                <ImageBrush Source="/Assets/start-page-background.png" Stretch="UniformToFill"/>
+            </Setter>
+        </Style>
+    </UserControl.Styles>
+    <Border Classes="Photo">
         <Border HorizontalAlignment="Center" VerticalAlignment="Center" Background="white" Padding="50">
             <StackPanel Spacing="20">
                 <TextBlock Text="О нас" Foreground="Black" FontSize="48" FontWeight="Bold" HorizontalAlignment="Center"/>

@@ -21,6 +21,7 @@
         <PackageReference Include="Avalonia" />
         <PackageReference Include="Avalonia.Android"/>
         <PackageReference Include="Avalonia.Svg" />
+        <PackageReference Include="ReactiveUI.Validation" />
         <PackageReference Include="Xamarin.AndroidX.Core.SplashScreen"/>
     </ItemGroup>
 

@@ -97,7 +97,21 @@ public class JsonDataService : IDataService
     public async Task<List<Appointment>> GetAppointmentsAsync()
     {
         var filePath = Path.Combine(_dataPath, "appointments.json");
+        if (!File.Exists(filePath)) await File.WriteAllTextAsync(filePath, "[]");
         var json = await File.ReadAllTextAsync(filePath);
-        return JsonSerializer.Deserialize<List<Appointment>>(json);
+        return JsonSerializer.Deserialize<List<Appointment>>(json) ?? [];
+    }
+    public async Task<Service> GetServiceByIdAsync(string id)
+    {
+        var services = await LoadServicesAsync();
+        return services.FirstOrDefault(s => s.Id == id);
+    }
+    public async Task AddAppointmentAsync(Appointment appointment)
+    {
+        var appointments = await GetAppointmentsAsync();
+        appointments.Add(appointment);
+        var filePath = Path.Combine(_dataPath, "appointments.json");
+        await File.WriteAllTextAsync(filePath, JsonSerializer.Serialize(appointments, new JsonSerializerOptions { WriteIndented = true }));
+        Console.WriteLine("Теперь точно записали");
     }
 }
