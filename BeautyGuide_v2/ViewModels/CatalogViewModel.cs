@@ -23,7 +23,7 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
     private Category _selectedCategory;
     private decimal _minPrice;
     private decimal _maxPrice;
-    private string _sortBy;
+    private int _sortBy;
     private bool _isDataLoaded; // Флаг для отслеживания загрузки данных
     private int _selectedGender; // пол: 1: "Муж", 2: "Жен", или 0: null
     private bool _hasHomeVisit;   // вызов на дом: true/false/null
@@ -108,7 +108,7 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
         set => this.RaiseAndSetIfChanged(ref _maxPrice, value);
     }
 
-    public string SortBy
+    public int SortBy
     {
         get => _sortBy;
         set => this.RaiseAndSetIfChanged(ref _sortBy, value);
@@ -234,13 +234,14 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
         if (!_isDataLoaded || Services == null) return; // Не сортировать, если данные не загружены или Services null
 
         var sorted = Services.AsEnumerable();
-
+        
         sorted = SortBy switch
         {
-            "Popularity" => sorted.OrderByDescending(s => s.Service.PopularityScore),
-            "Newest" => sorted.OrderByDescending(s => s.Service.CreatedAt),
-            "Price" => sorted.OrderBy(s => s.Service.Price),
-            "Rating" => sorted.OrderByDescending(s => s.Service.Rating),
+            0 => sorted.OrderByDescending(s => s.Service.PopularityScore),
+            1 => sorted.OrderByDescending(s => s.Service.CreatedAt),
+            2 => sorted.OrderBy(s => s.Service.Price),
+            3 => sorted.OrderByDescending(s => s.Service.Price),
+            4 => sorted.OrderByDescending(s => s.Service.Rating),
             _ => sorted
         };
 

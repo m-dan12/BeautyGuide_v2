@@ -46,9 +46,4 @@
         <PackageReference Include="ReactiveUI.Validation" />
         <PackageReference Include="WebViewControl-Avalonia" />
     </ItemGroup>
-    
-
-    <ItemGroup>
-      <Folder Include="Controls\" />
-    </ItemGroup>
 </Project>

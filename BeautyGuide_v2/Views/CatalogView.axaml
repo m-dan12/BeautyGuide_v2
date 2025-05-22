@@ -37,7 +37,7 @@
                                  HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Background="Transparent"/>
                     </Grid>
                 </Border>
-                <ComboBox SelectedItem="{Binding SortBy}" 
+                <ComboBox SelectedIndex="{Binding SortBy}" 
                           PlaceholderText="Сортировка" MinWidth="200" Background="#F8F8F8" BorderBrush="#DDDDDD" CornerRadius="2" BorderThickness="1 " Foreground="Black">
                     <ComboBoxItem>Популярность</ComboBoxItem>
                     <ComboBoxItem>Новые</ComboBoxItem>
