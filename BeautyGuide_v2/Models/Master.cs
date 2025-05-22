@@ -6,5 +6,6 @@ public class Master
     public string FullName { get; set; }
     public string Photo { get; set; }
     public string Description { get; set; }
+    public string Gender { get; set; }
     public string SalonId { get; set; }
 }

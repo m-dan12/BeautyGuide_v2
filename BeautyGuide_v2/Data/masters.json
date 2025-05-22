@@ -4,6 +4,7 @@
     "FullName": "Долгова Татьяна Александровна",
     "Photo": "/Data/Images/master1.jpg",
     "Description": "Стилист с 10-летним опытом",
+    "Gender": "Жен",
     "SalonId": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f"
   },
   {
@@ -11,6 +12,7 @@
     "FullName": "Иванова Елена Сергеевна",
     "Photo": "/Data/Images/master2.jpg",
     "Description": "Топ-мастер по окрашиванию волос",
+    "Gender": "Жен",
     "SalonId": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9g"
   },
   {
@@ -18,6 +20,7 @@
     "FullName": "Петров Алексей Викторович",
     "Photo": "/Data/Images/master3.jpg",
     "Description": "Барбер с авторской техникой стрижки",
+    "Gender": "Муж",
     "SalonId": "5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9g0h"
   },
   {
@@ -25,6 +28,7 @@
     "FullName": "Смирнова Ольга Дмитриевна",
     "Photo": "/Data/Images/master4.jpg",
     "Description": "Эксперт по уходу за лицом",
+    "Gender": "Жен",
     "SalonId": "6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9g0h1i"
   },
   {
@@ -32,6 +36,7 @@
     "FullName": "Кузнецов Денис Олегович",
     "Photo": "/Data/Images/master5.jpg",
     "Description": "Мастер маникюра",
+    "Gender": "Муж",
     "SalonId": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9g0h1i2j"
   },
   {
@@ -39,6 +44,7 @@
     "FullName": "Морозова Анна Игоревна",
     "Photo": "/Data/Images/master6.jpg",
     "Description": "Мастер педикюра",
+    "Gender": "Жен",
     "SalonId": "8b9c0d1e-2f3a-4b5c-6d7e-8f9g0h1i2j3k"
   },
   {
@@ -46,6 +52,7 @@
     "FullName": "Николаев Артем Петрович",
     "Photo": "/Data/Images/master7.jpg",
     "Description": "Мастер маникюра премиум-класса",
+    "Gender": "Муж",
     "SalonId": "9c0d1e2f-3a4b-5c6d-7e8f-9g0h1i2j3k4l"
   },
   {
@@ -53,6 +60,7 @@
     "FullName": "Волкова Юлия Андреевна",
     "Photo": "/Data/Images/master8.jpg",
     "Description": "Специалист по уходу за проблемной кожей лица",
+    "Gender": "Жен",
     "SalonId": "0d1e2f3a-4b5c-6d7e-8f9g-0h1i2j3k4l5m"
   },
   {
@@ -60,6 +68,7 @@
     "FullName": "Громов Павел Сергеевич",
     "Photo": "/Data/Images/master9.jpg",
     "Description": "Эксперт по аппаратному педикюру",
+    "Gender": "Муж",
     "SalonId": "1e2f3a4b-5c6d-7e8f-9g0h-1i2j3k4l5m6n"
   },
   {
@@ -67,6 +76,7 @@
     "FullName": "Белова Марина Викторовна",
     "Photo": "/Data/Images/master10.jpg",
     "Description": "Топ-мастер по педикюру",
+    "Gender": "Жен",
     "SalonId": "2f3a4b5c-6d7e-8f9g-0h1i-2j3k4l5m6n7o"
   },
   {
@@ -74,6 +84,7 @@
     "FullName": "Соколов Иван Дмитриевич",
     "Photo": "/Data/Images/master11.jpg",
     "Description": "Специалист по мужскому уходу и бритью",
+    "Gender": "Жен",
     "SalonId": "3a4b5c6d-7e8f-9g0h-1i2j-3k4l5m6n7o8p"
   },
   {
@@ -81,6 +92,7 @@
     "FullName": "Ковалева Екатерина Сергеевна",
     "Photo": "/Data/Images/master12.jpg",
     "Description": "Мастер ногтевого сервиса с художественным образованием",
+    "Gender": "Жен",
     "SalonId": "4b5c6d7e-8f9g-0h1i-2j3k-4l5m6n7o8p9q"
   },
   {
@@ -88,6 +100,7 @@
     "FullName": "Федоров Максим Андреевич",
     "Photo": "/Data/Images/master13.jpg",
     "Description": "Эксперт по татуажу и перманентному макияжу",
+    "Gender": "Муж",
     "SalonId": "5c6d7e8f-9g0h-1i2j-3k4l-5m6n7o8p9q0r"
   },
   {
@@ -95,6 +108,7 @@
     "FullName": "Антонова Ольга Владимировна",
     "Photo": "/Data/Images/master14.jpg",
     "Description": "Специалист по anti-age процедурам",
+    "Gender": "Жен",
     "SalonId": "6d7e8f9g-0h1i-2j3k-4l5m-6n7o8p9q0r1s"
   },
   {
@@ -102,6 +116,7 @@
     "FullName": "Данилов Кирилл Евгеньевич",
     "Photo": "/Data/Images/master15.jpg",
     "Description": "Мастер по сложным формам стрижек",
+    "Gender": "Муж",
     "SalonId": "7e8f9g0h-1i2j-3k4l-5m6n-7o8p9q0r1s2t"
   },
   {
@@ -109,6 +124,7 @@
     "FullName": "Медведева Анастасия Игоревна",
     "Photo": "/Data/Images/master16.jpg",
     "Description": "Эксперт по бразильскому кератиновому выпрямлению",
+    "Gender": "Жен",
     "SalonId": "8f9g0h1i-2j3k-4l5m-6n7o-8p9q0r1s2t3u"
   },
   {
@@ -116,6 +132,7 @@
     "FullName": "Тимофеев Артем Валерьевич",
     "Photo": "/Data/Images/master17.jpg",
     "Description": "Специалист по коррекции и окрашиванию бровей",
+    "Gender": "Муж",
     "SalonId": "9g0h1i2j-3k4l-5m6n-7o8p-9q0r1s2t3u4v"
   },
   {
@@ -123,6 +140,7 @@
     "FullName": "Семенова Виктория Олеговна",
     "Photo": "/Data/Images/master18.jpg",
     "Description": "Мастер по SPA-уходам для волос",
+    "Gender": "Жен",
     "SalonId": "0h1i2j3k-4l5m-6n7o-8p9q-0r1s2t3u4v5w"
   },
   {
@@ -130,6 +148,7 @@
     "FullName": "Григорьев Дмитрий Александрович",
     "Photo": "/Data/Images/master19.jpg",
     "Description": "Эксперт по медицинскому педикюру",
+    "Gender": "Муж",
     "SalonId": "1i2j3k4l-5m6n-7o8p-9q0r-1s2t3u4v5w6x"
   },
   {
@@ -137,6 +156,7 @@
     "FullName": "Павлова Елена Валерьевна",
     "Photo": "/Data/Images/master20.jpg",
     "Description": "Специалист по японскому маникюру",
+    "Gender": "Жен",
     "SalonId": "2j3k4l5m-6n7o-8p9q-0r1s-2t3u4v5w6x7y"
   },
   {
@@ -144,6 +164,7 @@
     "FullName": "Ларина Анна Михайловна",
     "Photo": "/Data/Images/master21.jpg",
     "Description": "Топ-мастер по аппаратному маникюру и сложному дизайну",
+    "Gender": "Жен",
     "SalonId": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f"
   },
   {
@@ -151,6 +172,7 @@
     "FullName": "Королева Виктория Сергеевна",
     "Photo": "/Data/Images/master22.jpg",
     "Description": "Специалист по европейскому маникюру и лечению ногтей",
+    "Gender": "Жен",
     "SalonId": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9g"
   },
   {
@@ -158,6 +180,7 @@
     "FullName": "Зайцева Елизавета Андреевна",
     "Photo": "/Data/Images/master23.jpg",
     "Description": "Эксперт по педикюру и уходу за кожей стоп",
+    "Gender": "Жен",
     "SalonId": "5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9g0h"
   },
   {
@@ -165,6 +188,7 @@
     "FullName": "Максимова Арина Денисовна",
     "Photo": "/Data/Images/master24.jpg",
     "Description": "Косметолог с медицинским образованием, специалист по уходу за кожей",
+    "Gender": "Жен",
     "SalonId": "6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9g0h1i"
   },
   {
@@ -172,6 +196,7 @@
     "FullName": "Белоусова Дарья Олеговна",
     "Photo": "/Data/Images/master25.jpg",
     "Description": "Специалист по пилингам и anti-age программам",
+    "Gender": "Жен",
     "SalonId": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9g0h1i2j"
   },
   {
@@ -179,6 +204,7 @@
     "FullName": "Громова Алина Игоревна",
     "Photo": "/Data/Images/master26.jpg",
     "Description": "Колорист премиум-класса, специалист по сложным окрашиваниям",
+    "Gender": "Жен",
     "SalonId": "8b9c0d1e-2f3a-4b5c-6d7e-8f9g0h1i2j3k"
   },
   {
@@ -186,6 +212,7 @@
     "FullName": "Сорокин Павел Витальевич",
     "Photo": "/Data/Images/master27.jpg",
     "Description": "Барбер с авторской техникой стрижки и бритья",
+    "Gender": "Муж",
     "SalonId": "9c0d1e2f-3a4b-5c6d-7e8f-9g0h1i2j3k4l"
   },
   {
@@ -193,6 +220,7 @@
     "FullName": "Кузьмина Вероника Александровна",
     "Photo": "/Data/Images/master28.jpg",
     "Description": "Мастер по nail-арту и 3D-дизайну ногтей",
+    "Gender": "Жен",
     "SalonId": "0d1e2f3a-4b5c-6d7e-8f9g-0h1i2j3k4l5m"
   },
   {
@@ -200,6 +228,7 @@
     "FullName": "Фролов Игорь Дмитриевич",
     "Photo": "/Data/Images/master29.jpg",
     "Description": "Специалист по мужским стрижкам и укладкам",
+    "Gender": "Муж",
     "SalonId": "1e2f3a4b-5c6d-7e8f-9g0h-1i2j3k4l5m6n"
   },
   {
@@ -207,6 +236,7 @@
     "FullName": "Семенова Оксана Владимировна",
     "Photo": "/Data/Images/master30.jpg",
     "Description": "Эксперт по массажу лица и SPA-процедурам",
+    "Gender": "Жен",
     "SalonId": "2f3a4b5c-6d7e-8f9g-0h1i-2j3k4l5m6n7o"
   }
 ]

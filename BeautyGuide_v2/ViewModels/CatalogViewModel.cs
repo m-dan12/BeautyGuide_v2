@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ReactiveUI;
 using BeautyGuide_v2.Interfaces;
 using BeautyGuide_v2.Models;
+using Newtonsoft.Json;
 
 namespace BeautyGuide_v2.ViewModels;
 
@@ -24,8 +25,16 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
     private decimal _maxPrice;
     private string _sortBy;
     private bool _isDataLoaded; // Флаг для отслеживания загрузки данных
-    
+    private int _selectedGender; // пол: 1: "Муж", 2: "Жен", или 0: null
+    private bool _hasHomeVisit;   // вызов на дом: true/false/null
+    private bool _hasParking;     // парковка: true/false/null
+    private bool _isAllCategoriesSelected = true;
+    private string _searchQuery;
+    private string _salonsJson;
+    public List<Salon> Salons { get; private set; } = [];
 
+    public string CurrentAddress { get; private set; } =
+        "https://yandex.ru/maps/51/samara/search/%D1%81%D0%B0%D0%BB%D0%BE%D0%BD%D1%8B%20%D0%BA%D1%80%D0%B0%D1%81%D0%BE%D1%82%D1%8B/?ll=50.133072%2C53.183910&sll=50.100199%2C53.195876&sspn=0.474129%2C0.178961&z=13";
     public CatalogViewModel(IDataService dataService, IImageLoaderService imageLoaderService, INavigationService тavigationService)
     {
         _dataService = dataService ?? throw new ArgumentNullException(nameof(dataService));
@@ -37,16 +46,38 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
         _isDataLoaded = false;
 
         // Реактивное обновление при изменении фильтров
-        this.WhenAnyValue(x => x.SelectedCategory, x => x.MinPrice, x => x.MaxPrice)
+        this.WhenAnyValue(
+                x => x.SelectedCategory, x => x.MinPrice, x => x.MaxPrice,
+                x => x.SelectedGender, x => x.HasHomeVisit, x => x.HasParking,
+                x => x.IsAllCategoriesSelected // Добавляем новое свойство
+            )
             .Throttle(TimeSpan.FromMilliseconds(300))
             .Where(_ => _isDataLoaded) // Выполнять только после загрузки данных
             .Subscribe(_ => ApplyFilters());
+        
+        this.WhenAnyValue(x => x.SearchQuery)
+            .Throttle(TimeSpan.FromMilliseconds(300))
+            .DistinctUntilChanged()          // лишние вызовы не нужны
+            .Where(_ => _isDataLoaded)
+            .Subscribe(_ => ApplyFilters());
+
 
         this.WhenAnyValue(x => x.SortBy)
             .Where(_ => _isDataLoaded) // Выполнять только после загрузки данных
             .Subscribe(_ => ApplySorting());
-    }
+        
+        this.WhenAnyValue(x => x.SelectedCategory)
+            .Subscribe((x) =>
+            {
+                if (x != null) IsAllCategoriesSelected = false;
+            });
 
+    }
+    public string SalonsJson
+    {
+        get => _salonsJson;
+        set => this.RaiseAndSetIfChanged(ref _salonsJson, value);
+    }
     public ObservableCollection<ServiceCard> Services
     {
         get => _filteredServices;
@@ -82,6 +113,42 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
         get => _sortBy;
         set => this.RaiseAndSetIfChanged(ref _sortBy, value);
     }
+    public int SelectedGender
+    {
+        get => _selectedGender;
+        set => this.RaiseAndSetIfChanged(ref _selectedGender, value);
+    }
+    public bool HasHomeVisit
+    {
+        get => _hasHomeVisit;
+        set => this.RaiseAndSetIfChanged(ref _hasHomeVisit, value);
+    }
+    public bool HasParking
+    {
+        get => _hasParking;
+        set => this.RaiseAndSetIfChanged(ref _hasParking, value);
+    }
+    public bool IsAllCategoriesSelected
+    {
+        get => _isAllCategoriesSelected;
+        set => this.RaiseAndSetIfChanged(ref _isAllCategoriesSelected, value);
+    }
+    public string SearchQuery
+    {
+        get => _searchQuery;
+        set => this.RaiseAndSetIfChanged(ref _searchQuery, value);
+    }
+    
+    
+    public void ResetCategoryFilter()
+    {
+        if (IsAllCategoriesSelected)
+        {
+            SelectedCategory = null; // Сбрасываем выбранную категорию
+        }
+        ApplyFilters(); // Применяем фильтры заново
+    }
+
 
     public async Task LoadAsync(string parameter)
     {
@@ -98,6 +165,7 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
                 {
                     var master = masters.FirstOrDefault(m => m.Id == s.MasterId);
                     var salon = salons.FirstOrDefault(sal => sal.Id == s.SalonId);
+                    Salons.Add(salon);
                     var photoUrl = servicePhotos.FirstOrDefault(p => p.ServiceId == s.Id)?.Url;
                     return new ServiceCard(s, servicePhotos.Where(p => p.ServiceId == s.Id).Select(p => p.Url).ToList(), master, salon, _navigationService)
                     {
@@ -109,6 +177,13 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
             Services = new ObservableCollection<ServiceCard>(_allServices);
             Categories = categories;
             _isDataLoaded = true;
+            
+            SalonsJson = JsonConvert.SerializeObject(Salons.Select(s => new
+            {
+                s.Name,
+                s.Latitude,
+                s.Longitude
+            }));
         }
         catch (Exception ex)
         {
@@ -125,21 +200,32 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
         if (SelectedCategory != null)
         {
             var categoryIds = GetAllSubCategoryIds(SelectedCategory);
-            filtered = filtered.Where(s => categoryIds.Contains(s.Service.CategoryId));
+            filtered = filtered.Where(s => GetAllSubCategoryIds(SelectedCategory).Contains(s.Service.CategoryId));
         }
+        
+        if (!string.IsNullOrWhiteSpace(SearchQuery))
+            filtered = filtered.Where(s =>
+                s.Service.Name.Contains(SearchQuery, StringComparison.OrdinalIgnoreCase));
 
         if (MinPrice > 0)
-        {
             filtered = filtered.Where(s => s.Service.Price >= MinPrice);
-        }
 
         if (MaxPrice > 0)
-        {
             filtered = filtered.Where(s => s.Service.Price <= MaxPrice);
+        
+        if (SelectedGender != 0)
+        {
+            filtered = filtered.Where(s =>
+                string.Equals(s.Master.Gender, SelectedGender == 1 ? "Муж" : "Жен", StringComparison.OrdinalIgnoreCase));
         }
+        if (HasHomeVisit)
+            filtered = filtered.Where(s => s.Service.HomeVisit);
+
+        if (HasParking)
+            filtered = filtered.Where(s => s.Salon.HasParking);
 
         // Убедимся, что filtered не null
-        Services = new ObservableCollection<ServiceCard>(filtered?.ToList() ?? new List<ServiceCard>());
+        Services = new ObservableCollection<ServiceCard>(filtered?.ToList() ?? []);
         ApplySorting();
     }
 
@@ -149,33 +235,23 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
 
         var sorted = Services.AsEnumerable();
 
-        switch (SortBy)
+        sorted = SortBy switch
         {
-            case "Popularity":
-                sorted = sorted.OrderByDescending(s => s.Service.PopularityScore);
-                break;
-            case "Newest":
-                sorted = sorted.OrderByDescending(s => s.Service.CreatedAt);
-                break;
-            case "Price":
-                sorted = sorted.OrderBy(s => s.Service.Price);
-                break;
-            case "Rating":
-                sorted = sorted.OrderByDescending(s => s.Service.Rating);
-                break;
-            default:
-                sorted = sorted; // Без сортировки
-                break;
-        }
+            "Popularity" => sorted.OrderByDescending(s => s.Service.PopularityScore),
+            "Newest" => sorted.OrderByDescending(s => s.Service.CreatedAt),
+            "Price" => sorted.OrderBy(s => s.Service.Price),
+            "Rating" => sorted.OrderByDescending(s => s.Service.Rating),
+            _ => sorted
+        };
 
         // Убедимся, что sorted не null
-        Services = new ObservableCollection<ServiceCard>(sorted?.ToList() ?? new List<ServiceCard>());
+        Services = new ObservableCollection<ServiceCard>(sorted?.ToList() ?? []);
     }
 
     private List<string> GetAllSubCategoryIds(Category category)
     {
         var ids = new List<string> { category.Id };
-        foreach (var sub in category.SubCategories ?? new List<Category>())
+        foreach (var sub in category.SubCategories)
         {
             ids.AddRange(GetAllSubCategoryIds(sub));
         }

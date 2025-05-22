@@ -7,6 +7,7 @@
     "LeadTime": 2.0,
     "CreatedAt": "2025-05-01T10:00:00Z",
     "PopularityScore": 100,
+    "HomeVisit": true,
     "MasterId": "2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e",
     "SalonId": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
     "CategoryId": "b3c4d5e6-7f8a-9b0c-1d2e-3f4a5b6c7d8f"
@@ -19,6 +20,7 @@
     "LeadTime": 2.0,
     "CreatedAt": "2025-05-01T10:00:00Z",
     "PopularityScore": 100,
+    "HomeVisit": false,
     "MasterId": "2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e",
     "SalonId": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
     "CategoryId": "b3c4d5e6-7f8a-9b0c-1d2e-3f4a5b6c7d8f"
@@ -31,6 +33,7 @@
     "LeadTime": 1.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 120,
+    "HomeVisit": true,
     "MasterId": "3c4d5e6f-7g8h-9i0j-1k2l-3m4n5o6p7q8r",
     "SalonId": "5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9g0h",
     "CategoryId": "c4d5e6f7-8a9b-0c1d-2e3f-4a5b6c7d8e9a"
@@ -43,6 +46,7 @@
     "LeadTime": 1.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 90,
+    "HomeVisit": false,
     "MasterId": "2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e",
     "SalonId": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
     "CategoryId": "a1b2c3d4-e5f6-7g8h-9i0j-1k2l3m4n5o6p"
@@ -55,6 +59,7 @@
     "LeadTime": 3.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 130,
+    "HomeVisit": false,
     "MasterId": "2b3c4d5e-6f7g-8h9i-0j1k-2l3m4n5o6p7q",
     "SalonId": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9g",
     "CategoryId": "e6f7a8b9-0c1d-2e3f-4a5b-6c7d8e9f0a1c"
@@ -67,6 +72,7 @@
     "LeadTime": 2.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 110,
+    "HomeVisit": true,
     "MasterId": "6f7g8h9i-0j1k-2345-6f7g-8h9i0j1k2l3m",
     "SalonId": "8b9c0d1e-2f3a-4b5c-6d7e-8f9g0h1i2j3k",
     "CategoryId": "a1b2c3d4-e5f6-4789-0a1b-c2d3e4f5a6b7"
@@ -79,6 +85,7 @@
     "LeadTime": 2.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 125,
+    "HomeVisit": true,
     "MasterId": "6f7g8h9i-0j1k-2345-6f7g-8h9i0j1k2l3m",
     "SalonId": "8b9c0d1e-2f3a-4b5c-6d7e-8f9g0h1i2j3k",
     "CategoryId": "b2c3d4e5-f6g7-5890-1b2c-d3e4f5a6b7c8"
@@ -91,6 +98,7 @@
     "LeadTime": 2.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 115,
+    "HomeVisit": true,
     "MasterId": "2b3c4d5e-6f7g-8h9i-0j1k-2l3m4n5o6p7q",
     "SalonId": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9g",
     "CategoryId": "c3d4e5f6-g7h8-6901-2c3d-e4f5a6b7c8d9"
@@ -103,6 +111,7 @@
     "LeadTime": 3.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 105,
+    "HomeVisit": true,
     "MasterId": "2b3c4d5e-6f7g-8h9i-0j1k-2l3m4n5o6p7q",
     "SalonId": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9g",
     "CategoryId": "d4e5f6g7-h8i9-7012-3d4e-f5a6b7c8d9e0"
@@ -115,6 +124,7 @@
     "LeadTime": 2.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 120,
+    "HomeVisit": false,
     "MasterId": "6f7g8h9i-0j1k-2345-6f7g-8h9i0j1k2l3m",
     "SalonId": "8b9c0d1e-2f3a-4b5c-6d7e-8f9g0h1i2j3k",
     "CategoryId": "e5f6g7h8-i9j0-8123-4e5f-a6b7c8d9e0f1"
@@ -127,6 +137,7 @@
     "LeadTime": 3.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 140,
+    "HomeVisit": true,
     "MasterId": "6f7g8h9i-0j1k-2345-6f7g-8h9i0j1k2l3m",
     "SalonId": "8b9c0d1e-2f3a-4b5c-6d7e-8f9g0h1i2j3k",
     "CategoryId": "f6g7h8i9-j0k1-9234-5f6g-b7c8d9e0f1a2"
@@ -139,6 +150,7 @@
     "LeadTime": 2.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 110,
+    "HomeVisit": false,
     "MasterId": "2b3c4d5e-6f7g-8h9i-0j1k-2l3m4n5o6p7q",
     "SalonId": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9g",
     "CategoryId": "g7h8i9j0-k1l2-0345-6g7h-c8d9e0f1a2b3"
@@ -151,6 +163,7 @@
     "LeadTime": 2.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 100,
+    "HomeVisit": true,
     "MasterId": "2b3c4d5e-6f7g-8h9i-0j1k-2l3m4n5o6p7q",
     "SalonId": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9g",
     "CategoryId": "h8i9j0k1-l2m3-1456-7h8i-d9e0f1a2b3c4"
@@ -163,6 +176,7 @@
     "LeadTime": 1.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 95,
+    "HomeVisit": false,
     "MasterId": "5e6f7g8h-9i0j-1k2l-3m4n-5o6p7q8r9s0t",
     "SalonId": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9g0h1i2j",
     "CategoryId": "b9c0d1e2-3f4a-5b6c-7d8e-9f0a1b2c3d4f"
@@ -175,6 +189,7 @@
     "LeadTime": 1.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 100,
+    "HomeVisit": true,
     "MasterId": "1a2b3c4d-5e6f-7890-1a2b-3c4d5e6f7g8h",
     "SalonId": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
     "CategoryId": "2b3c4d5e-f6g7-8901-2b3c-4d5e6f7g8h9i"
@@ -187,6 +202,7 @@
     "LeadTime": 1.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 90,
+    "HomeVisit": false,
     "MasterId": "2b3c4d5e-6f7g-8901-2b3c-4d5e6f7g8h9i",
     "SalonId": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9g",
     "CategoryId": "5e6f7g8h-i9j0-1234-5e6f-7g8h9i0j1k2l"
@@ -199,6 +215,7 @@
     "LeadTime": 1.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 105,
+    "HomeVisit": false,
     "MasterId": "0t1u2v3w-4x5y-6z7a-8b9c-0d1e2f3g4h5i",
     "SalonId": "2j3k4l5m-6n7o-8p9q-0r1s-2t3u4v5w6x7y",
     "CategoryId": "6f7g8h9i-j0k1-2345-6f7g-8h9i0j1k2l3m"
@@ -211,6 +228,7 @@
     "LeadTime": 2.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 110,
+    "HomeVisit": true,
     "MasterId": "5e6f7g8h-9i0j-1k2l-3m4n-5o6p7q8r9s0t",
     "SalonId": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9g0h1i2j",
     "CategoryId": "7g8h9i0j-k1l2-3456-7g8h-9i0j1k2l3m4n"
@@ -223,6 +241,7 @@
     "LeadTime": 1.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 95,
+    "HomeVisit": true,
     "MasterId": "1a2b3c4d-5e6f-7890-1a2b-3c4d5e6f7g8h",
     "SalonId": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
     "CategoryId": "3c4d5e6f-g7h8-9012-3c4d-5e6f7g8h9i0j"
@@ -235,6 +254,7 @@
     "LeadTime": 1.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 120,
+    "HomeVisit": false,
     "MasterId": "1a2b3c4d-5e6f-7890-1a2b-3c4d5e6f7g8h",
     "SalonId": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
     "CategoryId": "4d5e6f7g-h8i9-0123-4d5e-6f7g8h9i0j1k"
@@ -247,6 +267,7 @@
     "LeadTime": 1.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 85,
+    "HomeVisit": false,
     "MasterId": "7g8h9i0j-1k2l-3m4n-5o6p-7q8r9s0t1u2v",
     "SalonId": "9c0d1e2f-3a4b-5c6d-7e8f-9g0h1i2j3k4l",
     "CategoryId": "8h9i0j1k-l2m3-4567-8h9i-0j1k2l3m4n5o"
@@ -259,6 +280,7 @@
     "LeadTime": 1.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 100,
+    "HomeVisit": true,
     "MasterId": "6f7g8h9i-0j1k-2l3m-4n5o-6p7q8r9s0t1u",
     "SalonId": "8b9c0d1e-2f3a-4b5c-6d7e-8f9g0h1i2j3k",
     "CategoryId": "9i0j1k2l-m3n4-5678-9i0j-1k2l3m4n5o6p"
@@ -271,6 +293,7 @@
     "LeadTime": 1.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 105,
+    "HomeVisit": true,
     "MasterId": "9i0j1k2l-3m4n-5o6p-7q8r-9s0t1u2v3w4x",
     "SalonId": "1e2f3a4b-5c6d-7e8f-9g0h-1i2j3k4l5m6n",
     "CategoryId": "0j1k2l3m-n4o5-6789-0j1k-2l3m4n5o6p7q"
@@ -283,6 +306,7 @@
     "LeadTime": 2.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 110,
+    "HomeVisit": false,
     "MasterId": "9i0j1k2l-3m4n-5o6p-7q8r-9s0t1u2v3w4x",
     "SalonId": "1e2f3a4b-5c6d-7e8f-9g0h-1i2j3k4l5m6n",
     "CategoryId": "1k2l3m4n-o5p6-7890-1k2l-3m4n5o6p7q8r"
@@ -295,6 +319,7 @@
     "LeadTime": 2.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 115,
+    "HomeVisit": false,
     "MasterId": "6f7g8h9i-0j1k-2l3m-4n5o-6p7q8r9s0t1u",
     "SalonId": "8b9c0d1e-2f3a-4b5c-6d7e-8f9g0h1i2j3k",
     "CategoryId": "2l3m4n5o-p6q7-8901-2l3m-4n5o6p7q8r9s"
@@ -307,6 +332,7 @@
     "LeadTime": 1.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 100,
+    "HomeVisit": true,
     "MasterId": "4d5e6f7g-8h9i-0j1k-2l3m-4n5o6p7q8r9s",
     "SalonId": "6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9g0h1i",
     "CategoryId": "b2c3d4e5-f6g7-8901-2b3c-4d5e6f7g8h9i"
@@ -319,6 +345,7 @@
     "LeadTime": 1.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 95,
+    "HomeVisit": true,
     "MasterId": "4d5e6f7g-8h9i-0j1k-2l3m-4n5o6p7q8r9s",
     "SalonId": "6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9g0h1i",
     "CategoryId": "c3d4e5f6-g7h8-9012-3c4d-5e6f7g8h9i0j"
@@ -331,6 +358,7 @@
     "LeadTime": 2.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 105,
+    "HomeVisit": true,
     "MasterId": "4d5e6f7g-8h9i-0j1k-2l3m-4n5o6p7q8r9s",
     "SalonId": "6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9g0h1i",
     "CategoryId": "d4e5f6g7-h8i9-0123-4d5e-6f7g8h9i0j1k"
@@ -343,6 +371,7 @@
     "LeadTime": 1.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 110,
+    "HomeVisit": false,
     "MasterId": "5e6f7g8h-i9j0-1234-5e6f-7g8h9i0j1k2l",
     "SalonId": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9g0h1i2j",
     "CategoryId": "f6g7h8i9-j0k1-2345-6f7g-8h9i0j1k2l3m"
@@ -355,6 +384,7 @@
     "LeadTime": 1.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 100,
+    "HomeVisit": true,
     "MasterId": "5e6f7g8h-i9j0-1234-5e6f-7g8h9i0j1k2l",
     "SalonId": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9g0h1i2j",
     "CategoryId": "g7h8i9j0-k1l2-3456-7g8h-9i0j1k2l3m4n"
@@ -367,6 +397,7 @@
     "LeadTime": 1.5,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 105,
+    "HomeVisit": false,
     "MasterId": "5e6f7g8h-i9j0-1234-5e6f-7g8h9i0j1k2l",
     "SalonId": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9g0h1i2j",
     "CategoryId": "h8i9j0k1-l2m3-4567-8h9i-0j1k2l3m4n5o"
@@ -379,6 +410,7 @@
     "LeadTime": 2.0,
     "CreatedAt": "2025-05-22T00:00:00Z",
     "PopularityScore": 115,
+    "HomeVisit": true,
     "MasterId": "2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e",
     "SalonId": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f",
     "CategoryId": "b3c4d5e6-7f8a-9b0c-1d2e-3f4a5b6c7d8f"

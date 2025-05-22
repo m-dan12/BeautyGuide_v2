@@ -3,9 +3,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:BeautyGuide_v2.ViewModels"
+             xmlns:converters="clr-namespace:BeautyGuide_v2.Converters"
+             xmlns:webview="clr-namespace:WebViewControl;assembly=WebViewControl.Avalonia"
+             xmlns:behaviors="clr-namespace:BeautyGuide_v2.Behaviors"
+             xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Behaviors"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="BeautyGuide_v2.Views.CatalogView"
              x:DataType="vm:CatalogViewModel">
+    <UserControl.Resources>
+        <converters:TagToValueConverter x:Key="TagToValueConverter" />
+    </UserControl.Resources>
     <UserControl.Styles>
         <Style Selector="TextBlock">
             <Setter Property="Foreground" Value="Black"/>
@@ -14,44 +21,85 @@
             <Setter Property="Foreground" Value="Black"/>
         </Style>
     </UserControl.Styles>
-    <DockPanel Margin="50 25">
-        <StackPanel Spacing="15" DockPanel.Dock="Top" HorizontalAlignment="Right" Orientation="Horizontal">
-            <StackPanel Orientation="Horizontal">
-                <TextBox Watermark="Поиск"
-                         MinWidth="200"
-                         Height="24" CornerRadius="2 0 0 2" Background="#F8F8F8" BorderBrush="#DDDDDD" BorderThickness="1 1 0.5 1"/>
-                <Button VerticalAlignment="Stretch" MinWidth="24" CornerRadius="0 2 2 0" Background="#F8F8F8" BorderBrush="#DDDDDD" BorderThickness="0.5 1 1 1">
-                    <Svg Width="12" Path="/Assets/magnifying-glass.svg"/>
-                </Button>
+    <StackPanel>
+        <Grid ColumnDefinitions="Auto *" RowDefinitions="Auto *" Margin="50 25">
+            
+            <!-- Поиск и сортировка -->
+            <StackPanel Grid.Column="1" Spacing="15" DockPanel.Dock="Top" HorizontalAlignment="Right" Orientation="Horizontal" Margin="20, 0">
+                <Border MinWidth="200" VerticalAlignment="Top"
+                        CornerRadius="2 0 0 2"
+                        Background="#F8F8F8" BorderBrush="#DDDDDD"
+                        BorderThickness="1 ">
+                    <Grid ColumnDefinitions="Auto *">
+                        <Svg Width="12" Path="/Assets/magnifying-glass.svg" Margin="12 0 0 0"/>
+                        <TextBox Grid.Column="1" Watermark="Поиск" BorderThickness="0"
+                                 Text="{Binding SearchQuery}"
+                                 HorizontalAlignment="Stretch" VerticalContentAlignment="Center" Background="Transparent"/>
+                    </Grid>
+                </Border>
+                <ComboBox SelectedItem="{Binding SortBy}" 
+                          PlaceholderText="Сортировка" MinWidth="200" Background="#F8F8F8" BorderBrush="#DDDDDD" CornerRadius="2" BorderThickness="1 " Foreground="Black">
+                    <ComboBoxItem>Популярность</ComboBoxItem>
+                    <ComboBoxItem>Новые</ComboBoxItem>
+                    <ComboBoxItem>Дешевле</ComboBoxItem>
+                    <ComboBoxItem>Дороже</ComboBoxItem>
+                    <ComboBoxItem>С высоким рейтингом</ComboBoxItem>
+                </ComboBox>
             </StackPanel>
-            <ComboBox SelectedItem="{Binding SortBy}" MinWidth="200" Background="#F8F8F8" BorderBrush="#DDDDDD" CornerRadius="2" BorderThickness="1 " Foreground="Black">
-                <ComboBoxItem>Популярность</ComboBoxItem>
-                <ComboBoxItem>Новые</ComboBoxItem>
-                <ComboBoxItem>Дешевле</ComboBoxItem>
-                <ComboBoxItem>Дороже</ComboBoxItem>
-                <ComboBoxItem>С высоким рейтингом</ComboBoxItem>
-            </ComboBox>
-        </StackPanel>
-        <StackPanel>
-            <!-- Фильтр по категориям -->
-            <ToggleButton Content="Все"/>
-            <TreeView DockPanel.Dock="Left" Width="250"
-                      ItemsSource="{Binding Categories}"
-                      SelectedItem="{Binding SelectedCategory}">
-                <TreeView.ItemTemplate>
-                    <TreeDataTemplate ItemsSource="{Binding SubCategories}">
-                        <TextBlock Text="{Binding Name}"/>
-                    </TreeDataTemplate>
-                </TreeView.ItemTemplate>
-            </TreeView>
-            <Grid ColumnDefinitions="* *">
-                <TextBox Text="{Binding MinPrice}" Watermark="Мин. цена" Margin="0 0 5 0"/>
-                <TextBox Grid.Column="1" Text="{Binding MaxPrice}" Watermark="Макс. цена" Margin="5 0 0 0"/>
-            </Grid>
-        </StackPanel>
-        <StackPanel>
+            
+            <!-- Фильтры -->
+            <StackPanel Grid.Row="1" Spacing="20" Margin="0 20" HorizontalAlignment="Left">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Категории" FontWeight="Bold"/>
+                    <ToggleButton Content="Все"
+                                  IsChecked="{Binding IsAllCategoriesSelected}"
+                                  Command="{Binding ResetCategoryFilter}"
+                                  Foreground="Black"
+                                  HorizontalAlignment="Stretch"/>
+                    <TreeView DockPanel.Dock="Left" Width="250"
+                              ItemsSource="{Binding Categories}"
+                              SelectedItem="{Binding SelectedCategory}">
+                        <TreeView.ItemTemplate>
+                            <TreeDataTemplate ItemsSource="{Binding SubCategories}">
+                                <TextBlock Text="{Binding Name}"/>
+                            </TreeDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
+                </StackPanel>
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Цена" FontWeight="Bold"/>
+                    <Grid ColumnDefinitions="* *">
+                        <TextBox Text="{Binding MinPrice}" Watermark="Мин. цена" Margin="0 0 5 0"/>
+                        <TextBox Grid.Column="1" Text="{Binding MaxPrice}" Watermark="Макс. цена" Margin="5 0 0 0"/>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Пол" FontWeight="Bold"/>
+                    <ComboBox SelectedIndex="{Binding SelectedGender}"
+                              PlaceholderText="Пол мастера" 
+                              MinWidth="200" 
+                              Background="#F8F8F8" 
+                              BorderBrush="#DDDDDD" 
+                              CornerRadius="2" 
+                              BorderThickness="1" 
+                              Foreground="Black">
+                        <ComboBoxItem Content="Не выбрано" Tag="{x:Null}"/>
+                        <ComboBoxItem Content="Мужчина" Tag="Муж"/>
+                        <ComboBoxItem Content="Женщина" Tag="Жен"/>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Spacing="10">
+                    <CheckBox Content="Вызов на дом"  
+                              IsChecked="{Binding HasHomeVisit}" 
+                              Foreground="Black"/>
+                    <CheckBox Content="Есть парковка"
+                              IsChecked="{Binding HasParking}" 
+                              Foreground="Black"/>
+                </StackPanel>
+            </StackPanel>
+            
             <!-- Список карточек -->
-            <ItemsControl ItemsSource="{Binding Services}">
+            <ItemsControl Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Services}" HorizontalAlignment="Right">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Margin="10"/>
@@ -82,9 +130,9 @@
                                         Command="{Binding BookAppointment}">
                                     <TextBlock Text="Записаться" Foreground="White" FontSize="16" FontWeight="Bold"/>
                                 </Button>
-    
+
                                 <!-- Кнопка салона -->
-                                <Button Padding="0"
+                                <Button Padding="10 0" Height="50" CornerRadius="0" BorderThickness="0" HorizontalAlignment="Stretch" 
                                         Command="{Binding GoToSalon}">
                                     <Grid ColumnDefinitions="auto *">
                                         <Svg Width="18" Path="/Assets/geolocation.svg" Margin="5"/>
@@ -96,6 +144,12 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-        </StackPanel>
-    </DockPanel>
+        </Grid>
+        
+        <webview:WebView x:Name="MapWebView" Focusable="True"
+                         Height="600" Address="{Binding CurrentAddress}"
+                         HorizontalAlignment="Stretch">
+        </webview:WebView>
+
+    </StackPanel>
 </UserControl>

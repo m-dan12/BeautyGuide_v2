@@ -114,4 +114,11 @@ public class JsonDataService : IDataService
         await File.WriteAllTextAsync(filePath, JsonSerializer.Serialize(appointments, new JsonSerializerOptions { WriteIndented = true }));
         Console.WriteLine("Теперь точно записали");
     }
+
+    private async Task<List<DotOnMap>> LoadDotsOnMapAsync()
+    {
+        var filePath = Path.Combine(_dataPath, "salons.json");
+        var json = await File.ReadAllTextAsync(filePath);
+        return JsonSerializer.Deserialize<List<DotOnMap>>(json);
+    }
 }

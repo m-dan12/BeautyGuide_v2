@@ -11,6 +11,7 @@ public class Service
     public double LeadTime { get; set; }
     public DateTime CreatedAt { get; set; }
     public int PopularityScore { get; set; }
+    public bool HomeVisit { get; set; }
     public string MasterId { get; set; }
     public string SalonId { get; set; }
     public string CategoryId { get; set; }
