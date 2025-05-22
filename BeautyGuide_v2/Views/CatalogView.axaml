@@ -148,8 +148,7 @@
         
         <webview:WebView x:Name="MapWebView" Focusable="True"
                          Height="600" Address="{Binding CurrentAddress}"
-                         HorizontalAlignment="Stretch">
-        </webview:WebView>
+                         HorizontalAlignment="Stretch"/>
 
     </StackPanel>
 </UserControl>
