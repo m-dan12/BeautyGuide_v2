@@ -1,18 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
     <PropertyGroup>
-        <TargetFramework>net9.0-browser</TargetFramework>
+        <TargetFrameworks>net9.0;net9.0-browser</TargetFrameworks>
         <OutputType>Exe</OutputType>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <Nullable>enable</Nullable>
     </PropertyGroup>
-
+    
+    <ItemGroup>
+        <AvaloniaResource Include="**\*.axaml" />
+        <EmbeddedResource Include="Assets\**" />
+    </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" />
         <PackageReference Include="Avalonia.Browser"/>
+        <PackageReference Include="Avalonia.ReactiveUI" />
+        <PackageReference Include="Avalonia.ReactiveUI.Events" />
         <PackageReference Include="Avalonia.Svg" />
+        <PackageReference Include="ReactiveUI" />
+        <PackageReference Include="ReactiveUI.Fody" />
         <PackageReference Include="ReactiveUI.Validation" />
     </ItemGroup>
-
+    <ItemGroup>
+        <None Include="wwwroot\app.css" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="wwwroot\favicon.ico" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="wwwroot\index.html" CopyToOutputDirectory="PreserveNewest" />
+        <None Include="wwwroot\main.js" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\BeautyGuide_v2\BeautyGuide_v2.csproj"/>
     </ItemGroup>

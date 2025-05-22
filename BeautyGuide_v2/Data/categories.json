@@ -16,6 +16,11 @@
             "Id": "c4d5e6f7-8a9b-0c1d-2e3f-4a5b6c7d8e9a",
             "Name": "Мужские стрижки",
             "SubCategories": []
+          },
+          {
+            "Id": "a1b2c3d4-e5f6-7g8h-9i0j-1k2l3m4n5o6p",
+            "Name": "Детские стрижки",
+            "SubCategories": []
           }
         ]
       },
@@ -26,6 +31,46 @@
           {
             "Id": "e6f7a8b9-0c1d-2e3f-4a5b-6c7d8e9f0a1c",
             "Name": "Полное окрашивание",
+            "SubCategories": []
+          },
+          {
+            "Id": "a1b2c3d4-e5f6-4789-0a1b-c2d3e4f5a6b7",
+            "Name": "Мелирование",
+            "SubCategories": []
+          },
+          {
+            "Id": "b2c3d4e5-f6g7-5890-1b2c-d3e4f5a6b7c8",
+            "Name": "Балаяж",
+            "SubCategories": []
+          },
+          {
+            "Id": "c3d4e5f6-g7h8-6901-2c3d-e4f5a6b7c8d9",
+            "Name": "Шатуш",
+            "SubCategories": []
+          },
+          {
+            "Id": "d4e5f6g7-h8i9-7012-3d4e-f5a6b7c8d9e0",
+            "Name": "Колорирование",
+            "SubCategories": []
+          },
+          {
+            "Id": "e5f6g7h8-i9j0-8123-4e5f-a6b7c8d9e0f1",
+            "Name": "Омбре",
+            "SubCategories": []
+          },
+          {
+            "Id": "f6g7h8i9-j0k1-9234-5f6g-b7c8d9e0f1a2",
+            "Name": "Аэртач",
+            "SubCategories": []
+          },
+          {
+            "Id": "g7h8i9j0-k1l2-0345-6g7h-c8d9e0f1a2b3",
+            "Name": "Контуринг волос",
+            "SubCategories": []
+          },
+          {
+            "Id": "h8i9j0k1-l2m3-1456-7h8i-d9e0f1a2b3c4",
+            "Name": "Мажимеш",
             "SubCategories": []
           }
         ]
@@ -44,6 +89,67 @@
             "Id": "b9c0d1e2-3f4a-5b6c-7d8e-9f0a1b2c3d4f",
             "Name": "Классический маникюр",
             "SubCategories": []
+          },
+          {
+            "Id": "2b3c4d5e-f6g7-8901-2b3c-4d5e6f7g8h9i",
+            "Name": "Аппаратный маникюр",
+            "SubCategories": []
+          },
+          {
+            "Id": "5e6f7g8h-i9j0-1234-5e6f-7g8h9i0j1k2l",
+            "Name": "Европейский маникюр",
+            "SubCategories": []
+          },
+          {
+            "Id": "6f7g8h9i-j0k1-2345-6f7g-8h9i0j1k2l3m",
+            "Name": "Японский маникюр",
+            "SubCategories": []
+          },
+          {
+            "Id": "7g8h9i0j-k1l2-3456-7g8h-9i0j1k2l3m4n",
+            "Name": "SPA-маникюр",
+            "SubCategories": []
+          },
+          {
+            "Id": "3c4d5e6f-g7h8-9012-3c4d-5e6f7g8h9i0j",
+            "Name": "Френч",
+            "SubCategories": []
+          },
+          {
+            "Id": "4d5e6f7g-h8i9-0123-4d5e-6f7g8h9i0j1k",
+            "Name": "Покрытие гель-лаком",
+            "SubCategories": []
+          },
+          {
+            "Id": "8h9i0j1k-l2m3-4567-8h9i-0j1k2l3m4n5o",
+            "Name": "Мужской маникюр",
+            "SubCategories": []
+          }
+        ]
+      },
+      {
+        "Id": "1a2b3c4d-e5f6-7890-1a2b-3c4d5e6f7g8h",
+        "Name": "Педикюр",
+        "SubCategories": [
+          {
+            "Id": "9i0j1k2l-m3n4-5678-9i0j-1k2l3m4n5o6p",
+            "Name": "Классический педикюр",
+            "SubCategories": []
+          },
+          {
+            "Id": "0j1k2l3m-n4o5-6789-0j1k-2l3m4n5o6p7q",
+            "Name": "Аппаратный педикюр",
+            "SubCategories": []
+          },
+          {
+            "Id": "1k2l3m4n-o5p6-7890-1k2l-3m4n5o6p7q8r",
+            "Name": "Медицинский педикюр",
+            "SubCategories": []
+          },
+          {
+            "Id": "2l3m4n5o-p6q7-8901-2l3m-4n5o6p7q8r9s",
+            "Name": "SPA-педикюр",
+            "SubCategories": []
           }
         ]
       }
@@ -56,7 +162,128 @@
       {
         "Id": "d1e2f3a4-5b6c-7d8e-9f0a-1b2c3d4e5f6b",
         "Name": "Чистка лица",
-        "SubCategories": []
+        "SubCategories": [
+          {
+            "Id": "b2c3d4e5-f6g7-8901-2b3c-4d5e6f7g8h9i",
+            "Name": "Ультразвуковая чистка",
+            "SubCategories": []
+          },
+          {
+            "Id": "c3d4e5f6-g7h8-9012-3c4d-5e6f7g8h9i0j",
+            "Name": "Механическая чистка",
+            "SubCategories": []
+          },
+          {
+            "Id": "d4e5f6g7-h8i9-0123-4d5e-6f7g8h9i0j1k",
+            "Name": "Комбинированная чистка",
+            "SubCategories": []
+          }
+	]
+      },
+      {
+        "Id": "e5f6g7h8-i9j0-1234-5e6f-7g8h9i0j1k2l",
+        "Name": "Пиллинг",
+        "SubCategories": [
+          {
+            "Id": "f6g7h8i9-j0k1-2345-6f7g-8h9i0j1k2l3m",
+            "Name": "Химический пилинг",
+            "SubCategories": []
+          },
+          {
+            "Id": "g7h8i9j0-k1l2-3456-7g8h-9i0j1k2l3m4n",
+            "Name": "Энзимный пилинг",
+            "SubCategories": []
+          },
+          {
+            "Id": "h8i9j0k1-l2m3-4567-8h9i-0j1k2l3m4n5o",
+            "Name": "Фруктовый пилинг",
+            "SubCategories": []
+          }
+	]
+      },
+      {
+        "Id": "i9j0k1l2-m3n4-5678-9i0j-1k2l3m4n5o6p",
+        "Name": "Уходовые процедуры",
+        "SubCategories": [
+          {
+            "Id": "j0k1l2m3-n4o5-6789-0j1k-2l3m4n5o6p7q",
+            "Name": "Альгинатная маска",
+            "SubCategories": []
+          },
+          {
+            "Id": "k1l2m3n4-o5p6-7890-1k2l-3m4n5o6p7q8r",
+            "Name": "Лифтинг-уход",
+            "SubCategories": []
+          },
+          {
+            "Id": "l2m3n4o5-p6q7-8901-2l3m-4n5o6p7q8r9s",
+            "Name": "Увлажняющий уход",
+            "SubCategories": []
+          }
+	]
+      },
+      {
+        "Id": "m3n4o5p6-q7r8-9012-3m4n-5o6p7q8r9s0t",
+        "Name": "Инъекционная косметология",
+        "SubCategories": [
+          {
+            "Id": "n4o5p6q7-r8s9-0123-4n5o-6p7q8r9s0t1u",
+            "Name": "Биоревитализация",
+            "SubCategories": []
+          },
+          {
+            "Id": "o5p6q7r8-s9t0-1234-5o6p-7q8r9s0t1u2v",
+            "Name": "Мезотерапия",
+            "SubCategories": []
+          },
+          {
+            "Id": "p6q7r8s9-t0u1-2345-6p7q-8r9s0t1u2v3w",
+            "Name": "Контурная пластика",
+            "SubCategories": []
+          }
+	]
+      },
+      {
+        "Id": "q7r8s9t0-u1v2-3456-7q8r-9s0t1u2v3w4x",
+        "Name": "Аппаратные методики",
+        "SubCategories": [
+          {
+            "Id": "r8s9t0u1-v2w3-4567-8r9s-0t1u2v3w4x5y",
+            "Name": "RF-лифтинг",
+            "SubCategories": []
+          },
+          {
+            "Id": "s9t0u1v2-w3x4-5678-9s0t-1u2v3w4x5y6z",
+            "Name": "Ультразвуковая терапия",
+            "SubCategories": []
+          },
+          {
+            "Id": "t0u1v2w3-x4y5-6789-0t1u-2v3w4x5y6z7a",
+            "Name": "Микротоковая терапия",
+            "SubCategories": []
+          }
+	]
+      },
+      {
+        "Id": "u1v2w3x4-y5z6-7890-1u2v-3w4x5y6z7a8b",
+        "Name": "Массажи лица",
+        "SubCategories": [
+          {
+            "Id": "v2w3x4y5-z6a7-8901-2v3w-4x5y6z7a8b9c",
+            "Name": "Лимфодренажный массаж",
+            "SubCategories": []
+          },
+          {
+            "Id": "w3x4y5z6-a7b8-9012-3w4x-5y6z7a8b9c0d",
+            "Name": "Пластический массаж",
+            "SubCategories": []
+          },
+          {
+            "Id": "x4y5z6a7-b8c9-0123-4x5y-6z7a8b9c0d1e",
+            "Name": "Буккальный массаж",
+            "SubCategories": []
+          }
+	]
       }
     ]
   }

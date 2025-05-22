@@ -5,7 +5,7 @@
         <LangVersion>latest</LangVersion>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     </PropertyGroup>
-
+    
     <ItemGroup>
         <AvaloniaResource Include="Assets\**"/>
     </ItemGroup>
@@ -24,6 +24,9 @@
 
     <ItemGroup>
         <PackageReference Include="Avalonia"/>
+        <PackageReference Include="Avalonia.Browser" />
+        <PackageReference Include="Avalonia.ReactiveUI" />
+        <PackageReference Include="Avalonia.ReactiveUI.Events" />
         <PackageReference Include="Avalonia.Svg" />
         <PackageReference Include="Avalonia.Themes.Fluent"/>
         <PackageReference Include="Avalonia.Fonts.Inter"/>

@@ -20,7 +20,12 @@
     <ItemGroup>
         <PackageReference Include="Avalonia" />
         <PackageReference Include="Avalonia.Android"/>
+        <PackageReference Include="Avalonia.Browser" />
+        <PackageReference Include="Avalonia.ReactiveUI" />
+        <PackageReference Include="Avalonia.ReactiveUI.Events" />
         <PackageReference Include="Avalonia.Svg" />
+        <PackageReference Include="ReactiveUI" />
+        <PackageReference Include="ReactiveUI.Fody" />
         <PackageReference Include="ReactiveUI.Validation" />
         <PackageReference Include="Xamarin.AndroidX.Core.SplashScreen"/>
     </ItemGroup>

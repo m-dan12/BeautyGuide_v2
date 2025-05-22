@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Avalonia.Media.Imaging;
 using BeautyGuide_v2.Interfaces;
 using BeautyGuide_v2.Models;
+using Avalonia.ReactiveUI;
 using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using ReactiveUI.Validation.Abstractions;
 using ReactiveUI.Validation.Contexts;
 using ReactiveUI.Validation.Extensions;
+using ShimSkiaSharp;
 
 namespace BeautyGuide_v2.ViewModels;
 
@@ -26,20 +29,26 @@ public class AppointmentViewModel : ViewModelBase, IInitializableViewModel, IVal
     private Salon _salon;
     private string _photoUrl;
     
-
+    public IValidationContext ValidationContext { get; } = new ValidationContext();
+    
     public string ServiceName => _service.Name;
     public decimal ServicePrice => _service.Price;
     public Bitmap ServicePhoto => _imageLoaderService.LoadImage(_photoUrl);
     public string MasterName => _master.FullName;
     public string SalonName => _salon.Name;
-    public List<string> AvailableTimes { get; } = ["10:00", "11:00", "12:00", "13:00", "14:00"];
+    private readonly List<string> _availableTimes = [
+        "09:00", "10:00", "11:00",
+        "12:00", "13:00", "14:00",
+        "15:00", "16:00", "17:00",
+        "18:00", "19:00", "20:00"
+    ];
+    [Reactive] public List<string> AvailableTimes { get; private set; } = [];
     
     [Reactive] public DateTimeOffset? SelectedDate { get; set; }
     [Reactive] public string SelectedTime { get; set; }
     [Reactive] public string FullName { get; set; }
     [Reactive] public string PhoneNumber { get; set; }
-    public void CloseCommand() => _navigationService.ClosePopup();
-
+    public ReactiveCommand<Unit, Unit> Close { get; set; }
     public ReactiveCommand<Unit, Unit> Submit { get; set; }
 
     public AppointmentViewModel(INavigationService navigationService, IDataService dataService, IImageLoaderService imageLoaderService)
@@ -72,8 +81,36 @@ public class AppointmentViewModel : ViewModelBase, IInitializableViewModel, IVal
         
         var canSubmit = this.IsValid(); // Проверяет, что все валидации пройдены
         
+        this.WhenAnyValue(vm => vm.SelectedDate)
+            .Where(d => d.HasValue)
+            .Subscribe(async _ => await RefreshAvailableTimesAsync());  
+
+        
         Submit = ReactiveCommand.CreateFromTask(BookAppointmentAsync, canSubmit);
+        Close = ReactiveCommand.Create(() => _navigationService.ClosePopup());
     }
+    
+    private async Task RefreshAvailableTimesAsync()
+    {
+        if (_service is null || !SelectedDate.HasValue)
+        {
+            AvailableTimes = new(_availableTimes);           // показываем всё
+            return;
+        }
+
+        var appointments = await _dataService.GetAppointmentsAsync();
+
+        var booked = appointments
+            .Where(a => a.ServiceId == _service.Id &&
+                        a.AppointmentDate.Date == SelectedDate.Value.Date)
+            .Select(a => a.AppointmentTime)
+            .ToHashSet();
+
+        AvailableTimes = _availableTimes
+            .Where(t => !booked.Contains(t))
+            .ToList();
+    }
+
 
     public async Task LoadAsync(string parameter)
     {
@@ -87,6 +124,8 @@ public class AppointmentViewModel : ViewModelBase, IInitializableViewModel, IVal
                 _photoUrl = photos.FirstOrDefault(p => p.ServiceId == parameter).Url;
                 _salon = await _dataService.GetSalonByIdAsync(service.SalonId);
                 _master = await _dataService.GetMasterByIdAsync(service.MasterId);
+                
+                await RefreshAvailableTimesAsync();
             }
         }
     }
@@ -100,15 +139,19 @@ public class AppointmentViewModel : ViewModelBase, IInitializableViewModel, IVal
                 var appointment = new Appointment
                 {
                     Id = Guid.NewGuid().ToString(),
-                    ClientId = Guid.NewGuid().ToString(), // Можно заменить на реальный ClientId
+                    FullName = FullName,
+                    PhoneNumber = PhoneNumber,
                     MasterId = service.MasterId,
                     ServiceId = service.Id,
                     SalonId = service.SalonId,
-                    AppointmentDateTime = DateTime.Parse(SelectedDate.Value.ToString()) + TimeSpan.Parse(SelectedTime),
+                    AppointmentTime = SelectedTime,
+                    AppointmentDate = SelectedDate.Value,
                     Status = "Scheduled"
                 };
 
                 await _dataService.AddAppointmentAsync(appointment);
+                
+                await RefreshAvailableTimesAsync();
                 _navigationService.ClosePopup();
                 Console.WriteLine("Записали");
             }
@@ -117,5 +160,4 @@ public class AppointmentViewModel : ViewModelBase, IInitializableViewModel, IVal
         else Console.WriteLine("Не записали");
     }
 
-    public IValidationContext ValidationContext { get; }
 }

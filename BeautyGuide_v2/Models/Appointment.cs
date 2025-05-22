@@ -9,6 +9,9 @@ public class Appointment
     public string MasterId { get; set; }
     public string ServiceId { get; set; }
     public string SalonId { get; set; }
-    public DateTime AppointmentDateTime { get; set; }
+    public string FullName { get; set; }
+    public string PhoneNumber { get; set; }
+    public string AppointmentTime { get; set; }
+    public DateTimeOffset AppointmentDate { get; set; }
     public string Status { get; set; }
 }

@@ -21,7 +21,7 @@
                     <Grid ColumnDefinitions="* auto">
                         <TextBlock Text="Ваш заказ:" FontWeight="Bold" FontSize="20" VerticalAlignment="Center"/>
                         <Button Grid.Column="1" Padding="0" CornerRadius="0" BorderThickness="0"
-                                Command="{Binding CloseCommand}">
+                                Command="{Binding Close}">
                             <Svg Path="/Assets/x.svg" Width="24"/>
                         </Button>
                     </Grid>

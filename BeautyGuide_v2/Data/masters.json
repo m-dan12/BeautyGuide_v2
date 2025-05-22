@@ -5,5 +5,208 @@
     "Photo": "/Data/Images/master1.jpg",
     "Description": "Стилист с 10-летним опытом",
     "SalonId": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f"
+  },
+  {
+    "Id": "2b3c4d5e-6f7g-8h9i-0j1k-2l3m4n5o6p7q",
+    "FullName": "Иванова Елена Сергеевна",
+    "Photo": "/Data/Images/master2.jpg",
+    "Description": "Топ-мастер по окрашиванию волос",
+    "SalonId": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9g"
+  },
+  {
+    "Id": "3c4d5e6f-7g8h-9i0j-1k2l-3m4n5o6p7q8r",
+    "FullName": "Петров Алексей Викторович",
+    "Photo": "/Data/Images/master3.jpg",
+    "Description": "Барбер с авторской техникой стрижки",
+    "SalonId": "5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9g0h"
+  },
+  {
+    "Id": "4d5e6f7g-8h9i-0j1k-2l3m-4n5o6p7q8r9s",
+    "FullName": "Смирнова Ольга Дмитриевна",
+    "Photo": "/Data/Images/master4.jpg",
+    "Description": "Эксперт по уходу за лицом",
+    "SalonId": "6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9g0h1i"
+  },
+  {
+    "Id": "5e6f7g8h-9i0j-1k2l-3m4n-5o6p7q8r9s0t",
+    "FullName": "Кузнецов Денис Олегович",
+    "Photo": "/Data/Images/master5.jpg",
+    "Description": "Мастер маникюра",
+    "SalonId": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9g0h1i2j"
+  },
+  {
+    "Id": "6f7g8h9i-0j1k-2l3m-4n5o-6p7q8r9s0t1u",
+    "FullName": "Морозова Анна Игоревна",
+    "Photo": "/Data/Images/master6.jpg",
+    "Description": "Мастер педикюра",
+    "SalonId": "8b9c0d1e-2f3a-4b5c-6d7e-8f9g0h1i2j3k"
+  },
+  {
+    "Id": "7g8h9i0j-1k2l-3m4n-5o6p-7q8r9s0t1u2v",
+    "FullName": "Николаев Артем Петрович",
+    "Photo": "/Data/Images/master7.jpg",
+    "Description": "Мастер маникюра премиум-класса",
+    "SalonId": "9c0d1e2f-3a4b-5c6d-7e8f-9g0h1i2j3k4l"
+  },
+  {
+    "Id": "8h9i0j1k-2l3m-4n5o-6p7q-8r9s0t1u2v3w",
+    "FullName": "Волкова Юлия Андреевна",
+    "Photo": "/Data/Images/master8.jpg",
+    "Description": "Специалист по уходу за проблемной кожей лица",
+    "SalonId": "0d1e2f3a-4b5c-6d7e-8f9g-0h1i2j3k4l5m"
+  },
+  {
+    "Id": "9i0j1k2l-3m4n-5o6p-7q8r-9s0t1u2v3w4x",
+    "FullName": "Громов Павел Сергеевич",
+    "Photo": "/Data/Images/master9.jpg",
+    "Description": "Эксперт по аппаратному педикюру",
+    "SalonId": "1e2f3a4b-5c6d-7e8f-9g0h-1i2j3k4l5m6n"
+  },
+  {
+    "Id": "0j1k2l3m-4n5o-6p7q-8r9s-0t1u2v3w4x5y",
+    "FullName": "Белова Марина Викторовна",
+    "Photo": "/Data/Images/master10.jpg",
+    "Description": "Топ-мастер по педикюру",
+    "SalonId": "2f3a4b5c-6d7e-8f9g-0h1i-2j3k4l5m6n7o"
+  },
+  {
+    "Id": "1k2l3m4n-5o6p-7q8r-9s0t-1u2v3w4x5y6z",
+    "FullName": "Соколов Иван Дмитриевич",
+    "Photo": "/Data/Images/master11.jpg",
+    "Description": "Специалист по мужскому уходу и бритью",
+    "SalonId": "3a4b5c6d-7e8f-9g0h-1i2j-3k4l5m6n7o8p"
+  },
+  {
+    "Id": "2l3m4n5o-6p7q-8r9s-0t1u-2v3w4x5y6z7a",
+    "FullName": "Ковалева Екатерина Сергеевна",
+    "Photo": "/Data/Images/master12.jpg",
+    "Description": "Мастер ногтевого сервиса с художественным образованием",
+    "SalonId": "4b5c6d7e-8f9g-0h1i-2j3k-4l5m6n7o8p9q"
+  },
+  {
+    "Id": "3m4n5o6p-7q8r-9s0t-1u2v-3w4x5y6z7a8b",
+    "FullName": "Федоров Максим Андреевич",
+    "Photo": "/Data/Images/master13.jpg",
+    "Description": "Эксперт по татуажу и перманентному макияжу",
+    "SalonId": "5c6d7e8f-9g0h-1i2j-3k4l-5m6n7o8p9q0r"
+  },
+  {
+    "Id": "4n5o6p7q-8r9s-0t1u-2v3w-4x5y6z7a8b9c",
+    "FullName": "Антонова Ольга Владимировна",
+    "Photo": "/Data/Images/master14.jpg",
+    "Description": "Специалист по anti-age процедурам",
+    "SalonId": "6d7e8f9g-0h1i-2j3k-4l5m-6n7o8p9q0r1s"
+  },
+  {
+    "Id": "5o6p7q8r-9s0t-1u2v-3w4x-5y6z7a8b9c0d",
+    "FullName": "Данилов Кирилл Евгеньевич",
+    "Photo": "/Data/Images/master15.jpg",
+    "Description": "Мастер по сложным формам стрижек",
+    "SalonId": "7e8f9g0h-1i2j-3k4l-5m6n-7o8p9q0r1s2t"
+  },
+  {
+    "Id": "6p7q8r9s-0t1u-2v3w-4x5y-6z7a8b9c0d1e",
+    "FullName": "Медведева Анастасия Игоревна",
+    "Photo": "/Data/Images/master16.jpg",
+    "Description": "Эксперт по бразильскому кератиновому выпрямлению",
+    "SalonId": "8f9g0h1i-2j3k-4l5m-6n7o-8p9q0r1s2t3u"
+  },
+  {
+    "Id": "7q8r9s0t-1u2v-3w4x-5y6z-7a8b9c0d1e2f",
+    "FullName": "Тимофеев Артем Валерьевич",
+    "Photo": "/Data/Images/master17.jpg",
+    "Description": "Специалист по коррекции и окрашиванию бровей",
+    "SalonId": "9g0h1i2j-3k4l-5m6n-7o8p-9q0r1s2t3u4v"
+  },
+  {
+    "Id": "8r9s0t1u-2v3w-4x5y-6z7a-8b9c0d1e2f3g",
+    "FullName": "Семенова Виктория Олеговна",
+    "Photo": "/Data/Images/master18.jpg",
+    "Description": "Мастер по SPA-уходам для волос",
+    "SalonId": "0h1i2j3k-4l5m-6n7o-8p9q-0r1s2t3u4v5w"
+  },
+  {
+    "Id": "9s0t1u2v-3w4x-5y6z-7a8b-9c0d1e2f3g4h",
+    "FullName": "Григорьев Дмитрий Александрович",
+    "Photo": "/Data/Images/master19.jpg",
+    "Description": "Эксперт по медицинскому педикюру",
+    "SalonId": "1i2j3k4l-5m6n-7o8p-9q0r-1s2t3u4v5w6x"
+  },
+  {
+    "Id": "0t1u2v3w-4x5y-6z7a-8b9c-0d1e2f3g4h5i",
+    "FullName": "Павлова Елена Валерьевна",
+    "Photo": "/Data/Images/master20.jpg",
+    "Description": "Специалист по японскому маникюру",
+    "SalonId": "2j3k4l5m-6n7o-8p9q-0r1s-2t3u4v5w6x7y"
+  },
+  {
+    "Id": "1a2b3c4d-5e6f-7890-1a2b-3c4d5e6f7g8h",
+    "FullName": "Ларина Анна Михайловна",
+    "Photo": "/Data/Images/master21.jpg",
+    "Description": "Топ-мастер по аппаратному маникюру и сложному дизайну",
+    "SalonId": "3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f"
+  },
+  {
+    "Id": "2b3c4d5e-6f7g-8901-2b3c-4d5e6f7g8h9i",
+    "FullName": "Королева Виктория Сергеевна",
+    "Photo": "/Data/Images/master22.jpg",
+    "Description": "Специалист по европейскому маникюру и лечению ногтей",
+    "SalonId": "4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9g"
+  },
+  {
+    "Id": "3c4d5e6f-7g8h-9012-3c4d-5e6f7g8h9i0j",
+    "FullName": "Зайцева Елизавета Андреевна",
+    "Photo": "/Data/Images/master23.jpg",
+    "Description": "Эксперт по педикюру и уходу за кожей стоп",
+    "SalonId": "5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9g0h"
+  },
+  {
+    "Id": "4d5e6f7g-h8i9-0123-4d5e-6f7g8h9i0j1k",
+    "FullName": "Максимова Арина Денисовна",
+    "Photo": "/Data/Images/master24.jpg",
+    "Description": "Косметолог с медицинским образованием, специалист по уходу за кожей",
+    "SalonId": "6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9g0h1i"
+  },
+  {
+    "Id": "5e6f7g8h-i9j0-1234-5e6f-7g8h9i0j1k2l",
+    "FullName": "Белоусова Дарья Олеговна",
+    "Photo": "/Data/Images/master25.jpg",
+    "Description": "Специалист по пилингам и anti-age программам",
+    "SalonId": "7a8b9c0d-1e2f-3a4b-5c6d-7e8f9g0h1i2j"
+  },
+  {
+    "Id": "6f7g8h9i-0j1k-2345-6f7g-8h9i0j1k2l3m",
+    "FullName": "Громова Алина Игоревна",
+    "Photo": "/Data/Images/master26.jpg",
+    "Description": "Колорист премиум-класса, специалист по сложным окрашиваниям",
+    "SalonId": "8b9c0d1e-2f3a-4b5c-6d7e-8f9g0h1i2j3k"
+  },
+  {
+    "Id": "7g8h9i0j-k1l2-3456-7g8h-9i0j1k2l3m4n",
+    "FullName": "Сорокин Павел Витальевич",
+    "Photo": "/Data/Images/master27.jpg",
+    "Description": "Барбер с авторской техникой стрижки и бритья",
+    "SalonId": "9c0d1e2f-3a4b-5c6d-7e8f-9g0h1i2j3k4l"
+  },
+  {
+    "Id": "8h9i0j1k-l2m3-4567-8h9i-0j1k2l3m4n5o",
+    "FullName": "Кузьмина Вероника Александровна",
+    "Photo": "/Data/Images/master28.jpg",
+    "Description": "Мастер по nail-арту и 3D-дизайну ногтей",
+    "SalonId": "0d1e2f3a-4b5c-6d7e-8f9g-0h1i2j3k4l5m"
+  },
+  {
+    "Id": "9i0j1k2l-m3n4-5678-9i0j-1k2l3m4n5o6p",
+    "FullName": "Фролов Игорь Дмитриевич",
+    "Photo": "/Data/Images/master29.jpg",
+    "Description": "Специалист по мужским стрижкам и укладкам",
+    "SalonId": "1e2f3a4b-5c6d-7e8f-9g0h-1i2j3k4l5m6n"
+  },
+  {
+    "Id": "0j1k2l3m-n4o5-6789-0j1k-2l3m4n5o6p7q",
+    "FullName": "Семенова Оксана Владимировна",
+    "Photo": "/Data/Images/master30.jpg",
+    "Description": "Эксперт по массажу лица и SPA-процедурам",
+    "SalonId": "2f3a4b5c-6d7e-8f9g-0h1i-2j3k4l5m6n7o"
   }
 ]
