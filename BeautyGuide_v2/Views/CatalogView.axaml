@@ -96,6 +96,18 @@
                               IsChecked="{Binding HasParking}" 
                               Foreground="Black"/>
                 </StackPanel>
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Салон" FontWeight="Bold"/>
+                    <ComboBox ItemsSource="{Binding SalonNames}"
+                              SelectedItem="{Binding SelectedSalonName}"
+                              PlaceholderText="Все салоны"
+                              MinWidth="200"
+                              Background="#F8F8F8"
+                              BorderBrush="#DDDDDD"
+                              CornerRadius="2"
+                              BorderThickness="1"
+                              Foreground="Black"/>
+                </StackPanel>
             </StackPanel>
             
             <!-- Список карточек -->

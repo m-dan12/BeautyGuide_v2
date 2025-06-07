@@ -31,6 +31,8 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
     private bool _isAllCategoriesSelected = true;
     private string _searchQuery;
     private string _salonsJson;
+    private ObservableCollection<string> _salonNames = new();
+    private string _selectedSalonName;
     public List<Salon> Salons { get; private set; } = [];
 
     public string CurrentAddress { get; private set; } =
@@ -49,7 +51,7 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
         this.WhenAnyValue(
                 x => x.SelectedCategory, x => x.MinPrice, x => x.MaxPrice,
                 x => x.SelectedGender, x => x.HasHomeVisit, x => x.HasParking,
-                x => x.IsAllCategoriesSelected // Добавляем новое свойство
+                x => x.IsAllCategoriesSelected, x => x.SelectedSalonName // Добавляем фильтр по салонам
             )
             .Throttle(TimeSpan.FromMilliseconds(300))
             .Where(_ => _isDataLoaded) // Выполнять только после загрузки данных
@@ -138,6 +140,18 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
         get => _searchQuery;
         set => this.RaiseAndSetIfChanged(ref _searchQuery, value);
     }
+
+    public ObservableCollection<string> SalonNames
+    {
+        get => _salonNames;
+        private set => this.RaiseAndSetIfChanged(ref _salonNames, value);
+    }
+
+    public string SelectedSalonName
+    {
+        get => _selectedSalonName;
+        set => this.RaiseAndSetIfChanged(ref _selectedSalonName, value);
+    }
     
     
     public void ResetCategoryFilter()
@@ -176,6 +190,15 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
 
             Services = new ObservableCollection<ServiceCard>(_allServices);
             Categories = categories;
+
+            // Заполняем список салонов для фильтра
+            SalonNames = new ObservableCollection<string>(
+                _allServices
+                    .Select(s => s.Salon.Name)
+                    .Where(name => !string.IsNullOrEmpty(name))
+                    .Distinct()
+                    .OrderBy(n => n));
+
             _isDataLoaded = true;
             
             SalonsJson = JsonConvert.SerializeObject(Salons.Select(s => new
@@ -223,6 +246,10 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
 
         if (HasParking)
             filtered = filtered.Where(s => s.Salon.HasParking);
+
+        // Фильтрация по названию салона
+        if (!string.IsNullOrWhiteSpace(SelectedSalonName))
+            filtered = filtered.Where(s => s.Salon.Name == SelectedSalonName);
 
         // Убедимся, что filtered не null
         Services = new ObservableCollection<ServiceCard>(filtered?.ToList() ?? []);
