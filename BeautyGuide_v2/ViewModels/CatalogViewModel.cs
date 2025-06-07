@@ -52,7 +52,7 @@ public class CatalogViewModel : ViewModelBase, IInitializableViewModel
                 x => x.SelectedCategory, x => x.MinPrice, x => x.MaxPrice,
                 x => x.SelectedGender, x => x.HasHomeVisit, x => x.HasParking,
                 x => x.IsAllCategoriesSelected, x => x.SelectedSalonName // Добавляем фильтр по салонам
-            )
+            , (category, arg2, arg3, arg4, arg5, arg6, arg7, arg8) => (category, arg2, arg3, arg4, arg5, arg6, arg7, arg8))
             .Throttle(TimeSpan.FromMilliseconds(300))
             .Where(_ => _isDataLoaded) // Выполнять только после загрузки данных
             .Subscribe(_ => ApplyFilters());
